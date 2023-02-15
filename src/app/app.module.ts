@@ -19,24 +19,18 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
-    NzButtonModule,
-    NzIconModule,
-    NzDropDownModule
-  ],
-  providers: [
-    { provide: NZ_I18N, useValue: en_US }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, HeaderComponent, HomeComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpClientModule,
+        NzButtonModule,
+        NzIconModule,
+        NzDropDownModule,
+    ],
+    providers: [{ provide: NZ_I18N, useValue: en_US }],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
