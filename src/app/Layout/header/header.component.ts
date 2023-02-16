@@ -5,6 +5,7 @@ import { Workspace } from 'src/app/interfaces/workspace';
 import { CategoryService } from 'src/app/services/category.service';
 import { WorkspaceService } from '../../services/workspace.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
     selector: 'app-header',
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
         private workspaceService: WorkspaceService,
         private categoryService: CategoryService,
         private messService: NzMessageService,
+        private dataSerice: DataService,
     ) {}
     createWorkspace = new FormGroup({
         name: new FormControl(
@@ -34,15 +36,15 @@ export class HeaderComponent implements OnInit {
     });
 
     ngOnInit(): void {
-        // Lấy ra dữ liệu của menu
-        this.workspaceService.getWorkspace().subscribe((value) => {
-            this.workspaces = value;
-
-            this.workspaceService.getWorkspaceTick(1).subscribe(([{ tick }]) => {
-                this.tickWorkspace = value.filter((item) => {
-                    return tick.includes(item.id);
-                });
-            });
+        // Lấy ra tất cả các wp
+        this.workspaceService.getWorkspace();
+        this.dataSerice.currentWorkspace.subscribe((res) => {
+            this.workspaces = res;
+        });
+        // Lấy ra các wp đã đánh dấu
+        this.workspaceService.getWorkspaceTick(1);
+        this.dataSerice.wpTick.subscribe((res) => {
+            this.tickWorkspace = res;
         });
     }
 
@@ -74,7 +76,11 @@ export class HeaderComponent implements OnInit {
                     this.messService.success('Thêm workspace thành công!', { nzDuration: 3000 });
                     this.createWorkspace.reset();
                     // thêm wp đã thêm vào menu
-                    this.workspaces.push(value);
+
+                    this.workspaceService.getWorkspace();
+                    this.dataSerice.currentWorkspace.subscribe((res) => {
+                        this.workspaces = res;
+                    });
                 },
                 (error) => {
                     this.status = -1;
