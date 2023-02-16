@@ -24,15 +24,8 @@
             "email": "duclnph24870@fpt.edu.vn",
             "password": "ngocduc13102001",
             "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1]
-        },
-        {
-            "id": 2,
-            "userName": "Ngọc Đức",
-            "email": "duclnph24870@fpt.edu.vn",
-            "password": "ngocduc13102001",
-            "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1]
+            "tick": [1],
+            "role": 0
         }
     ],
     "category": [

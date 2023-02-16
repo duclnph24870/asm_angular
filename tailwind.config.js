@@ -16,6 +16,7 @@ module.exports = {
             subTitle: '#5E6C84',
             disabled: '#f5f6f8',
             inputHover: '#ebecf0',
+            red: '#f87171',
         },
     },
     plugins: [],
