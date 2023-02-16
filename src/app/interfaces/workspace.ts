@@ -3,4 +3,6 @@ export interface Workspace {
     name: string;
     image: string;
     members: number[];
+    category: number;
+    description: string;
 }

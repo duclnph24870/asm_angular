@@ -15,6 +15,7 @@ module.exports = {
             none: 'transparent',
             subTitle: '#5E6C84',
             disabled: '#f5f6f8',
+            inputHover: '#ebecf0',
         },
     },
     plugins: [],
