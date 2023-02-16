@@ -1,64 +1,90 @@
 {
-    "workspace": [
-        {
-            "id": 1,
-            "name": "Dứ án giáo dục 1",
-            "image": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "members": [1, 2, 3, 4, 5, 6],
-            "category": 1,
-            "description": "description"
-        },
-        {
-            "id": 2,
-            "name": "Dứ án giáo dục 2",
-            "image": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "members": [1, 2, 3, 4, 5, 6],
-            "category": 2,
-            "description": "description"
-        }
-    ],
-    "user": [
-        {
-            "id": 1,
-            "userName": "Ngọc Đức",
-            "email": "duclnph24870@fpt.edu.vn",
-            "password": "ngocduc13102001",
-            "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1]
-        },
-        {
-            "id": 2,
-            "userName": "Ngọc Đức",
-            "email": "duclnph24870@fpt.edu.vn",
-            "password": "ngocduc13102001",
-            "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1]
-        }
-    ],
-    "category": [
-        {
-            "id": 1,
-            "name": "Marketing"
-        },
-        {
-            "id": 2,
-            "name": "Điều hành"
-        },
-        {
-            "id": 3,
-            "name": "IT"
-        },
-        {
-            "id": 4,
-            "name": "Giáo dục"
-        },
-        {
-            "id": 5,
-            "name": "Nhân sự"
-        },
-        {
-            "id": 6,
-            "name": "Khác"
-        }
-    ]
+  "workspace": [
+    {
+      "id": 1,
+      "name": "Dứ án giáo dục 1",
+      "image": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "category": 1,
+      "description": "description"
+    },
+    {
+      "id": 2,
+      "name": "Dứ án giáo dục 2",
+      "image": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "category": 2,
+      "description": "description"
+    },
+    {
+      "name": "test",
+      "category": 5,
+      "description": "",
+      "members": [],
+      "image": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "id": 3
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "userName": "Ngọc Đức",
+      "email": "duclnph24870@fpt.edu.vn",
+      "password": "ngocduc13102001",
+      "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "tick": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "userName": "Ngọc Đức",
+      "email": "duclnph24870@fpt.edu.vn",
+      "password": "ngocduc13102001",
+      "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "tick": [
+        1
+      ]
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Điều hành"
+    },
+    {
+      "id": 3,
+      "name": "IT"
+    },
+    {
+      "id": 4,
+      "name": "Giáo dục"
+    },
+    {
+      "id": 5,
+      "name": "Nhân sự"
+    },
+    {
+      "id": 6,
+      "name": "Khác"
+    }
+  ]
 }

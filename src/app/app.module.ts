@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './Layout/Layout.component';
+
 import { HeaderComponent } from './Layout/header/header.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,11 +22,12 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { LoginComponent } from './Pages/login/login.component';
 
 registerLocaleData(en);
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent, HomeComponent],
+    declarations: [AppComponent, HeaderComponent, HomeComponent, LayoutComponent, LoginComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
