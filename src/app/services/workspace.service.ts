@@ -14,7 +14,6 @@ export class WorkspaceService {
     constructor(private httpClient: HttpClient) {}
 
     private handleError(error: HttpErrorResponse) {
-        console.log(error);
         return throwError(() => new Error('Something bad happened; please try again later.'));
     }
 
@@ -27,6 +26,12 @@ export class WorkspaceService {
 
     getWorkspaceTick(id: number): Observable<User[]> {
         return this.httpClient.get<User[]>(this.baseUrl + '/user?id=' + id);
+    }
+
+    searchWorkspace(value: string): Observable<Workspace[]> {
+        return this.httpClient
+            .get<Workspace[]>(this.baseUrl + '/workspace?q=' + value)
+            .pipe(catchError(this.handleError));
     }
 
     // POST

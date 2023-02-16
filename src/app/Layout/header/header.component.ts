@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Category } from 'src/app/interfaces/category';
 import { Workspace } from 'src/app/interfaces/workspace';
@@ -12,12 +12,13 @@ import { NzMessageService } from 'ng-zorro-antd/message';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+    @Input() searchVl: string = '';
     workspaces: Workspace[] = [];
     category: Category[] = [];
     tickWorkspace: Workspace[] = [];
     isVisible: boolean = false;
-    optionList: number[] = [1, 2, 3, 4, 5];
     status: number = -1;
+    searchResult: Workspace[] = [];
     constructor(
         private workspaceService: WorkspaceService,
         private categoryService: CategoryService,
@@ -78,5 +79,19 @@ export class HeaderComponent implements OnInit {
                     this.messService.error(error.message, { nzDuration: 3000 });
                 },
             );
+    }
+
+    handleSearch() {
+        this.workspaceService.searchWorkspace(this.searchVl).subscribe(
+            (result) => {
+                this.searchResult = result;
+                if (result.length === 0) {
+                    this.messService.warning('Không có kết quả phù hợp!');
+                }
+            },
+            (error) => {
+                this.messService.error('Lỗi server');
+            },
+        );
     }
 }

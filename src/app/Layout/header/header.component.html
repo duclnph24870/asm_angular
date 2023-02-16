@@ -158,4 +158,74 @@
             </div>
         </ng-container>
     </nz-modal>
+
+    <div
+        nz-dropdown
+        [nzDropdownMenu]="search"
+        nzTrigger="click"
+        [nzDisabled]="searchResult.length === 0"
+        class="w-[200px] pl-3 flex items-center focus-within:w-full focus-within:mx-1.5 focus-within:bg-white focus-within:hover:bg-white focus-within:text-[#333] ml-auto rounded-[5px] bg-[#3588b9] text-white [&>input]:bg-[#3588b9] [&>input]:bg-none hover:bg-[#67a6ca] [&>input]:text-inherit border-none"
+    >
+        <span class="mr-2 relative top-[0.5px]" nz-icon nzType="search"></span>
+
+        <input
+            type="text"
+            class="placeholder:text-white h-[32px] border-none focus:placeholder:text-[#333] outline-0"
+            placeholder="Tìm kiếm"
+            [(ngModel)]="searchVl"
+            (change)="handleSearch()"
+        />
+    </div>
+
+    <nz-dropdown-menu #search="nzDropdownMenu">
+        <h1 class="font-semibold text-subTitle mx-3 mt-4">Kết quả</h1>
+        <div class="p-[12px] rounded-[3px] shadow-md flex flex-col" nz-menu>
+            <div class="searchResult-item flex items-center mb-2" *ngFor="let item of searchResult">
+                <img src="{{ item.image }}" class="w-[40px] h-[40px] mr-2 shadow-md" alt="" />
+                <div class="">
+                    <h2 class="truncate text-[15px] font-semibold">{{ item.name }}</h2>
+                    <p class="truncate text-subTitle">{{ item.description }}</p>
+                </div>
+            </div>
+        </div>
+    </nz-dropdown-menu>
+
+    <span
+        nz-icon
+        nzType="bell"
+        class="mx-3 rotate-[40deg]"
+        nzTheme="outline"
+        style="font-size: 20px; color: #fff"
+    ></span>
+
+    <div nz-dropdown [nzDropdownMenu]="avatar" nzTrigger="click" class="avatar-header mr-3 w-[25px] h-[25px]">
+        <img
+            src="https://trello-members.s3.amazonaws.com/638deb1a1f064a0bf54f045b/399ad8bae95f312abb008bcc5ee41e79/50.png"
+            alt=""
+            class="w-full h-full rounded-[50%] shadow-lg cursor-pointer"
+        />
+    </div>
+
+    <nz-dropdown-menu #avatar="nzDropdownMenu">
+        <div class="flex w-[224px] flex-col py-2 [&>.item]:py-2 [&>.item]:px-5" nz-menu>
+            <h1 class="font-semibold text-subTitle px-5 text-[16px]">Tài khoản</h1>
+            <div class="item flex items-center">
+                <img
+                    class="w-[40px] h-[40px] rounded-[50%] mr-2"
+                    src="https://trello-members.s3.amazonaws.com/638deb1a1f064a0bf54f045b/399ad8bae95f312abb008bcc5ee41e79/50.png"
+                    alt=""
+                />
+                <div>
+                    <h2 class="truncate font-semibold text-[15px]">Đức ngọc</h2>
+                    <p class="w-[150px] truncate text-subTitle">duclnph24870@fpt.edu.vn</p>
+                </div>
+            </div>
+            <div class="item hover:text-primary cursor-pointer">Quản lý tài khoản</div>
+            <div class="item hover:text-primary cursor-pointer">Đăng xuất</div>
+            <div class="h-[1px] w-full shadow-input bg-primary mb-2 mt-0.5"></div>
+            <h1 class="font-semibold text-subTitle px-5 text-[16px]">Trello</h1>
+            <div class="item hover:text-primary cursor-pointer">Hồ sơ và hiển thị</div>
+            <div class="item hover:text-primary cursor-pointer">Cài Đặt</div>
+        </div>
+    </nz-dropdown-menu>
 </div>
