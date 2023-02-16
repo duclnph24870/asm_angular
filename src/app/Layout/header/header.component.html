@@ -1,6 +1,8 @@
 <div class="header bg-primary flex items-center h-[44px] px-[6px] py-[4px]">
     <div class="header-logo h-[31px] flex items-center">
-        <img src="../../../assets/images/d947df93bc055849898e.gif" alt="" class="h-100 w-[75px]" />
+        <a routerLink="/">
+            <img src="../../../assets/images/d947df93bc055849898e.gif" alt="" class="h-100 w-[75px]" />
+        </a>
     </div>
 
     <button
@@ -17,33 +19,19 @@
 
     <nz-dropdown-menu #menu1="nzDropdownMenu">
         <div class="p-[12px] rounded-[3px] shadow-md" nz-menu>
-            <h1 class="font-semibold text-[12px] text-subTitle mb-[12px]">Các không gian làm việc của bạn</h1>
+            <h1 class="font-semibold text-[12px] text-subTitle">Các không gian làm việc của bạn</h1>
             <div class="flex flex-wrap w-[304px]">
-                <div class="w-full">Chưa có không gian làm việc nào</div>
-                <div class="w-full"></div>
-                <div class="w-full">1</div>
+                <div *ngIf="workspaces.length === 0" class="w-full text-subTitle">Chưa có không gian làm việc nào</div>
+                <div *ngIf="workspaces.length > 0">
+                    <div class="w-full flex items-center mt-[12px] cursor-pointer" *ngFor="let wpItem of workspaces">
+                        <img class="w-[40px] h-[40px] rounded-[3px] shadow-sm" src="{{ wpItem.image }}" alt="" />
+                        <p class="truncate w-full ml-[8px] font-semibold hover:text-primary">
+                            {{ wpItem.name }}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    </nz-dropdown-menu>
-
-    <button
-        class="bg-none ml-1.5 flex items-center border-0 text-[14px] text-white hover:bg-buttonHover focus:text-white focus:bg-[#3588b9] hover:text-white px-[12px] py-[6px]"
-        nzType="link"
-        nz-button
-        nz-dropdown
-        nzTrigger="click"
-        [nzDropdownMenu]="menu2"
-    >
-        Gần đây
-        <span nz-icon nzType="down"></span>
-    </button>
-
-    <nz-dropdown-menu #menu2="nzDropdownMenu">
-        <ul nz-menu>
-            <li nz-menu-item>menu1 1st menu item</li>
-            <li nz-menu-item>menu1 2nd menu item</li>
-            <li nz-menu-item>menu1 3rd menu item</li>
-        </ul>
     </nz-dropdown-menu>
 
     <button
@@ -59,38 +47,108 @@
     </button>
 
     <nz-dropdown-menu #menu3="nzDropdownMenu">
-        <ul nz-menu>
-            <li nz-menu-item>menu1 1st menu item</li>
-            <li nz-menu-item>menu1 2nd menu item</li>
-            <li nz-menu-item>menu1 3rd menu item</li>
-        </ul>
-    </nz-dropdown-menu>
+        <div class="p-[12px] rounded-[3px] shadow-md" nz-menu>
+            <h1 *ngIf="tickWorkspace.length > 0" class="font-semibold text-[12px] text-subTitle mb-[12px]">
+                Không gian làm việc đã đánh dấu sao
+            </h1>
+            <div class="flex flex-wrap">
+                <div *ngIf="tickWorkspace.length === 0" class="w-full text-subTitle">
+                    <img class="w-[270px] h-[130px]" src="../../../assets/images/notTick.svg" alt="" />
+                    <p class="w-[270px] text-subTitle text-center mt-3">
+                        Gắn dấu sao các bảng quan trọng để truy cập nhanh và dễ dàng.
+                    </p>
+                </div>
+                <div *ngIf="tickWorkspace.length > 0">
+                    <div
+                        *ngFor="let tick of tickWorkspace"
+                        class="w-[304px] flex items-center mt-[12px] cursor-pointer"
+                    >
+                        <img class="w-[40px] h-[40px] rounded-[3px] shadow-sm" src="{{ tick.image }}" alt="" />
+                        <p class="truncate w-full ml-[8px] font-semibold hover:text-primary">
+                            {{ tick.name }}
+                        </p>
 
-    <button
-        class="bg-none ml-1.5 flex items-center border-0 text-[14px] text-white hover:bg-buttonHover focus:text-white focus:bg-[#3588b9] hover:text-white px-[12px] py-[6px]"
-        nzType="link"
-        nz-button
-        nz-dropdown
-        nzTrigger="click"
-        [nzDropdownMenu]="menu4"
-    >
-        Mẫu
-        <span nz-icon nzType="down"></span>
-    </button>
-
-    <nz-dropdown-menu #menu4="nzDropdownMenu">
-        <ul nz-menu>
-            <li nz-menu-item>menu1 1st menu item</li>
-            <li nz-menu-item>menu1 2nd menu item</li>
-            <li nz-menu-item>menu1 3rd menu item</li>
-        </ul>
+                        <span nz-icon class="ml-[5px] [&>svg]:fill-[#ffc526]" nzType="star" nzTheme="fill"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nz-dropdown-menu>
 
     <button
         class="bg-buttonHover ml-2 flex items-center border-0 text-[14px] text-white hover:bg-buttonHover focus:text-white focus:bg-[#3588b9] hover:text-white px-[12px] py-[6px]"
         nzType="link"
+        (click)="showModal()"
         nz-button
     >
         Tạo mới
     </button>
+
+    <nz-modal
+        [nzCentered]="true"
+        [(nzVisible)]="isVisible"
+        nzWidth="1200px"
+        [nzFooter]="null"
+        (nzOnCancel)="handleCancel()"
+    >
+        <ng-container *nzModalContent>
+            <div class="w-full flex h-[686px]">
+                <div class="w-6/12 px-[24px] mt-[64px] mb-[16px] flex justify-center">
+                    <form class="w-[388px]">
+                        <h1 class="text-[24px] font-semibold mb-[12px]">Hãy xây dựng một Không gian làm việc</h1>
+                        <p class="text-[18px] text-subTitle">
+                            Tăng năng suất của bạn bằng cách giúp mọi người dễ dàng truy cập bảng ở một vị trí.
+                        </p>
+
+                        <div class="input-group mt-[12px] flex flex-col">
+                            <label class="font-bold text-[12px] mb-1">Tên không gian làm việc</label>
+                            <input
+                                class="w-full rounded-[3px] outline-0 block h-[48px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                                type="text"
+                                placeholder="Công ty của Taco"
+                            />
+                            <p class="description text-[12px] text-[#6B778C]">
+                                Đây là tên công ty hoặc tổ chức của bạn
+                            </p>
+                        </div>
+
+                        <div class="input-group mt-[12px] flex flex-col">
+                            <label class="font-bold text-[12px] mb-1">Loại không gian làm việc</label>
+
+                            <nz-select nzPlaceHolder="Chọn ..." nzAllowClear nzValue="1">
+                                <nz-option *ngFor="let o of optionList" [nzValue]="o" [nzLabel]="o"></nz-option>
+                            </nz-select>
+                        </div>
+
+                        <div class="input-group mt-[12px] flex flex-col">
+                            <label class="font-bold text-[12px] mb-1">Mô tả Không gian làm việc</label>
+                            <textarea
+                                class="w-full rounded-[3px] outline-0 block h-[120px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                                cols="30"
+                                rows="10"
+                                placeholder="Nhóm của chúng tôi tổ chức mọi thứ ở đây"
+                            ></textarea>
+                            <p class="description text-[12px] text-[#6B778C]">
+                                Đưa các thành viên của bạn vào bảng với mô tả ngắn về Không gian làm việc của bạn.
+                            </p>
+                        </div>
+
+                        <button
+                            class="w-full h-[48px] rounded-[3px] bg-primary text-white shadow-md mt-[12px] disabled:bg-disabled disabled:text-[#a5adba] disabled:shadow-none"
+                            disabled
+                        >
+                            Tiếp tục
+                        </button>
+                    </form>
+                </div>
+                <div class="modal-createWp-right w-6/12 flex justify-center">
+                    <img
+                        class="w-[342px] h-[356px] relative top-[44px]"
+                        src="../../../assets/images/createWp.svg"
+                        alt=""
+                    />
+                </div>
+            </div>
+        </ng-container>
+    </nz-modal>
 </div>

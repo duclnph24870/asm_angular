@@ -9,6 +9,11 @@
     box-sizing: border-box;
 }
 
-html, button {
+html,
+button {
     font-family: 'Roboto', sans-serif !important;
+}
+
+.ant-modal-body {
+    padding: 0 !important;
 }
