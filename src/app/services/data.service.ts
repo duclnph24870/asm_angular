@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../interfaces/user';
 import { Workspace } from '../interfaces/workspace';
-import { WorkspaceService } from './workspace.service';
 
 @Injectable({
     providedIn: 'root',
@@ -10,7 +9,7 @@ import { WorkspaceService } from './workspace.service';
 export class DataService {
     private workspace = new BehaviorSubject<Workspace[]>([]);
     private workspaceTick = new BehaviorSubject<Workspace[]>([]);
-    private userLogin = new BehaviorSubject<User | null>(null);
+    private userLogin = new BehaviorSubject<User[]>([]);
     currentWorkspace = this.workspace.asObservable();
     wpTick = this.workspaceTick.asObservable();
     user = this?.userLogin.asObservable();
@@ -25,7 +24,7 @@ export class DataService {
         this.workspaceTick.next(data);
     }
 
-    setUser(data: User) {
+    setUser(data: User[]) {
         this.userLogin.next(data);
     }
 }

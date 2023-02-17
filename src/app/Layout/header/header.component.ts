@@ -6,6 +6,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { WorkspaceService } from '../../services/workspace.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DataService } from 'src/app/services/data.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
     selector: 'app-header',
@@ -20,11 +22,13 @@ export class HeaderComponent implements OnInit {
     isVisible: boolean = false;
     status: number = -1;
     searchResult: Workspace[] = [];
+    userLogin: User[] = [];
     constructor(
         private workspaceService: WorkspaceService,
         private categoryService: CategoryService,
         private messService: NzMessageService,
         private dataSerice: DataService,
+        private userService: UserService,
     ) {}
     createWorkspace = new FormGroup({
         name: new FormControl(
@@ -45,6 +49,11 @@ export class HeaderComponent implements OnInit {
         this.workspaceService.getWorkspaceTick(1);
         this.dataSerice.wpTick.subscribe((res) => {
             this.tickWorkspace = res;
+        });
+
+        // lấy thông tin user login
+        this.dataSerice.user.subscribe((res) => {
+            this.userLogin = res;
         });
     }
 
@@ -101,5 +110,9 @@ export class HeaderComponent implements OnInit {
                 this.messService.error('Lỗi server');
             },
         );
+    }
+
+    handleLogout() {
+        this.userService.logout();
     }
 }

@@ -47,7 +47,12 @@ export class UserService {
     getUser() {
         const idUser = localStorage.getItem('idUser');
         if (idUser) {
-            return this.httpClient.get<User[]>(this.baseUrl + '/user?id=' + idUser).pipe(catchError(this.handleError));
+            return this.httpClient
+                .get<User[]>(this.baseUrl + '/user?id=' + idUser)
+                .pipe(catchError(this.handleError))
+                .subscribe((res) => {
+                    this.dataService.setUser(res);
+                });
         } else {
             this.messService.warning('Bạn cần đăng nhập để sử dụng chức năng này', { nzDuration: 3000 });
             this.router.navigate(['/login']);

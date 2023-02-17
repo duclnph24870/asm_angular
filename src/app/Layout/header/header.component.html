@@ -200,30 +200,27 @@
         style="font-size: 20px; color: #fff"
     ></span>
 
-    <div nz-dropdown [nzDropdownMenu]="avatar" nzTrigger="click" class="avatar-header mr-3 min-w-[25px] h-[25px]">
-        <img
-            src="https://trello-members.s3.amazonaws.com/638deb1a1f064a0bf54f045b/399ad8bae95f312abb008bcc5ee41e79/50.png"
-            alt=""
-            class="w-full h-full rounded-[50%] shadow-lg cursor-pointer"
-        />
+    <div
+        nz-dropdown
+        [nzDropdownMenu]="avatar"
+        nzTrigger="click"
+        class="avatar-header mr-3 min-w-[25px] w-[25px] h-[25px]"
+    >
+        <img [src]="userLogin[0]?.avatar" alt="" class="w-full h-full rounded-[50%] shadow-lg cursor-pointer" />
     </div>
 
     <nz-dropdown-menu #avatar="nzDropdownMenu">
         <div class="flex w-[224px] flex-col py-2 [&>.item]:py-2 [&>.item]:px-5" nz-menu>
             <h1 class="font-semibold text-subTitle px-5 text-[16px]">Tài khoản</h1>
             <div class="item flex items-center">
-                <img
-                    class="w-[40px] h-[40px] rounded-[50%] mr-2"
-                    src="https://trello-members.s3.amazonaws.com/638deb1a1f064a0bf54f045b/399ad8bae95f312abb008bcc5ee41e79/50.png"
-                    alt=""
-                />
+                <img class="w-[40px] h-[40px] rounded-[50%] mr-2" [src]="userLogin[0]?.avatar" alt="" />
                 <div>
-                    <h2 class="truncate font-semibold text-[15px]">Đức ngọc</h2>
-                    <p class="w-[150px] truncate text-subTitle">duclnph24870@fpt.edu.vn</p>
+                    <h2 class="truncate font-semibold text-[15px]">{{ userLogin[0]?.userName }}</h2>
+                    <p class="w-[150px] truncate text-subTitle">{{ userLogin[0]?.email }}</p>
                 </div>
             </div>
             <div class="item hover:text-primary cursor-pointer">Quản lý tài khoản</div>
-            <div class="item hover:text-primary cursor-pointer">Đăng xuất</div>
+            <div class="item text-red cursor-pointer" (click)="handleLogout()">Đăng xuất</div>
             <div class="h-[1px] w-full shadow-input bg-primary mb-2 mt-0.5"></div>
             <h1 class="font-semibold text-subTitle px-5 text-[16px]">Trello</h1>
             <div class="item hover:text-primary cursor-pointer">Hồ sơ và hiển thị</div>
