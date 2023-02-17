@@ -1,1 +1,57 @@
-<p>login works!</p>
+<div class="flex items-center justify-center w-screen h-screen relative">
+    <div class="background w-full h-full flex items-end justify-between">
+        <img class="w-[400px] h-[400px]" src="../../../assets/images/authLeft.svg" alt="" />
+        <img class="w-[400px] h-[400px]" src="../../../assets/images/authRight.svg" alt="" />
+    </div>
+    <div class="content absolute z-50 flex flex-col items-center">
+        <img class="w-[200px] h-[100px]" src="../../../assets/images/logo.svg" alt="" />
+
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="shadow-lg p-8 w-[400px]" action="">
+            <h1 class="text-[22px] font-semibold text-center mb-2">Đăng nhập vào Trello</h1>
+
+            <div class="input-group mt-[12px] flex flex-col">
+                <label class="font-bold text-[12px] mb-1">Email của bạn</label>
+                <input
+                    class="w-full hover:bg-inputHover focus:bg-white rounded-[3px] outline-0 block h-[48px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                    type="email"
+                    placeholder="email@gmail.com"
+                    formControlName="email"
+                />
+                <p class="description text-[12px] text-[#6B778C]">
+                    <span class="text-red">(*)</span> Email tối thiểu 5 ký tự và tối đa 150 ký tự
+                </p>
+            </div>
+
+            <div class="input-group mt-[12px] flex flex-col">
+                <label class="font-bold text-[12px] mb-1">Mật khẩu của bạn</label>
+                <input
+                    class="w-full hover:bg-inputHover focus:bg-white rounded-[3px] outline-0 block h-[48px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                    type="text"
+                    placeholder="VD: xA$%r*@12"
+                    formControlName="password"
+                />
+                <p class="description text-[12px] text-[#6B778C]">
+                    <span class="text-red">(*)</span> Mật khẩu tối thiểu 5 ký tự và tối đa 100 ký tự
+                </p>
+            </div>
+
+            <button
+                class="w-full h-[48px] rounded-[3px] bg-[#5aac44] text-white shadow-md mt-[12px] disabled:bg-disabled disabled:text-[#a5adba] disabled:shadow-none"
+                [disabled]="!loginForm.valid && status === 0"
+            >
+                Đăng ký
+            </button>
+
+            <div class="my-3 text-[18px] text-subTitle text-center">OR</div>
+            <div class="flex items-center justify-center">
+                <a routerLink="/forgot" class="text-primary text-center underline decoration-solid block"
+                    >Không thể đăng nhập?</a
+                >
+                <div class="w-[5px] h-[5px] rounded-[50%] mx-3 bg-subTitle"></div>
+                <a routerLink="/registor" class="text-primary text-center underline decoration-solid block"
+                    >Đăng ký tài khoản</a
+                >
+            </div>
+        </form>
+    </div>
+</div>
