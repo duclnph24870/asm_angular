@@ -9,7 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
             nzTrigger="click"
             class="w-full hover:bg-hover rounded-[3px] px-2 py-1 flex items-center mt-[12px] cursor-pointer"
         >
-            <img class="w-[30px] h-[30px] rounded-[3px] shadow-sm" src="{{ data?.image }}" alt="" />
+            <div
+                class="img min-w-[32px] w-[32px] h-[32px] rounded-[3px] shadow-sm bg-[#006e49] text-[20px] flex items-center justify-center text-white font-bold text-center"
+            >
+                {{ data?.name.charAt(0) }}
+            </div>
             <p
                 class="w-full ml-[8px] font-bold text-[14px]"
                 style="
@@ -29,7 +33,7 @@ import { Component, OnInit, Input } from '@angular/core';
                 <div
                     class="flex items-center rounded-[3px] pl-[35px] text-subTitle py-1.5 mb-0.5 hover:bg-hover cursor-pointer"
                 >
-                    <span nz-icon nzType="radar-chart" class="mr-2" nzTheme="outline"></span> Bảng
+                    <span nz-icon nzType="appstore" class="mr-2" nzTheme="outline"></span> Bảng
                 </div>
                 <div
                     class="flex items-center rounded-[3px] text-subTitle pl-[35px] py-1.5 mb-0.5 hover:bg-hover cursor-pointer"

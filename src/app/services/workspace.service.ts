@@ -25,36 +25,15 @@ export class WorkspaceService {
 
     // GET
     getWorkspace() {
+        const idUser = localStorage.getItem('idUser');
         this.httpClient
-            .get<Workspace[]>(this.baseUrl + '/workspace', {
+            .get<Workspace[]>(this.baseUrl + '/workspace?members_like=' + idUser, {
                 responseType: 'json',
             })
             .pipe(catchError(this.handleError))
             .subscribe(
                 (res) => {
                     this.dataService.setWorkspace(res);
-                },
-                (err) => {
-                    this.messService.error('Lỗi server');
-                },
-            );
-    }
-
-    getWorkspaceTick(id: number): void {
-        this.getWorkspace();
-
-        this.httpClient
-            .get<User[]>(this.baseUrl + '/user?id=' + id)
-            .pipe(catchError(this.handleError))
-            .subscribe(
-                ([{ tick }]) => {
-                    this.dataService.currentWorkspace.subscribe((res) => {
-                        const tickData = res.filter((item) => {
-                            return tick.includes(item.id);
-                        });
-
-                        this.dataService.setWpTick(tickData);
-                    });
                 },
                 (err) => {
                     this.messService.error('Lỗi server');

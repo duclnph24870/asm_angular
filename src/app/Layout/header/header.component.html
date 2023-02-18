@@ -24,7 +24,11 @@
                 <div *ngIf="workspaces.length === 0" class="w-full text-subTitle">Chưa có không gian làm việc nào</div>
                 <div *ngIf="workspaces.length > 0">
                     <div class="w-full flex items-center mt-[12px] cursor-pointer" *ngFor="let wpItem of workspaces">
-                        <img class="w-[40px] h-[40px] rounded-[3px] shadow-sm" src="{{ wpItem.image }}" alt="" />
+                        <div
+                            class="img min-w-[40px] w-[40px] h-[40px] rounded-[3px] shadow-sm bg-[#006e49] text-[20px] flex items-center justify-center text-white font-bold text-center"
+                        >
+                            {{ wpItem.name.charAt(0) }}
+                        </div>
                         <p class="truncate w-full ml-[8px] font-semibold hover:text-primary">
                             {{ wpItem.name }}
                         </p>
@@ -48,24 +52,21 @@
 
     <nz-dropdown-menu #menu3="nzDropdownMenu">
         <div class="p-[12px] rounded-[3px] shadow-md" nz-menu>
-            <h1 *ngIf="tickWorkspace.length > 0" class="font-semibold text-[12px] text-subTitle mb-[12px]">
+            <h1 *ngIf="tickTable.length > 0" class="font-semibold text-[12px] text-subTitle mb-[12px]">
                 Không gian làm việc đã đánh dấu sao
             </h1>
             <div class="flex flex-wrap">
-                <div *ngIf="tickWorkspace.length === 0" class="w-full text-subTitle">
+                <div *ngIf="tickTable.length === 0" class="w-full text-subTitle">
                     <img class="w-[270px] h-[130px]" src="../../../assets/images/notTick.svg" alt="" />
                     <p class="w-[270px] text-subTitle text-center mt-3">
                         Gắn dấu sao các bảng quan trọng để truy cập nhanh và dễ dàng.
                     </p>
                 </div>
-                <div *ngIf="tickWorkspace.length > 0">
-                    <div
-                        *ngFor="let tick of tickWorkspace"
-                        class="w-[304px] flex items-center mt-[12px] cursor-pointer"
-                    >
-                        <img class="w-[40px] h-[40px] rounded-[3px] shadow-sm" src="{{ tick.image }}" alt="" />
+                <div *ngIf="tickTable.length > 0">
+                    <div *ngFor="let tick of tickTable" class="w-[304px] flex items-center mt-[12px] cursor-pointer">
+                        <img class="w-[40px] h-[40px] rounded-[3px] shadow-sm" src="{{ tick.bg }}" alt="" />
                         <p class="truncate w-full ml-[8px] font-semibold hover:text-primary">
-                            {{ tick.name }}
+                            {{ tick.title }}
                         </p>
 
                         <span nz-icon class="ml-[5px] [&>svg]:fill-[#ffc526]" nzType="star" nzTheme="fill"></span>
@@ -183,7 +184,11 @@
         <h1 class="font-semibold text-subTitle mx-3 mt-4">Kết quả</h1>
         <div class="p-[12px] rounded-[3px] shadow-md flex flex-col" nz-menu>
             <div class="searchResult-item flex items-center mb-2" *ngFor="let item of searchResult">
-                <img src="{{ item.image }}" class="w-[40px] h-[40px] mr-2 shadow-md" alt="" />
+                <div
+                    class="img min-w-[40px] w-[40px] mr-2 h-[40px] rounded-[3px] shadow-sm bg-[#006e49] text-[20px] flex items-center justify-center text-white font-bold text-center"
+                >
+                    {{ item.name.charAt(0) }}
+                </div>
                 <div class="">
                     <h2 class="truncate text-[15px] font-semibold">{{ item.name }}</h2>
                     <p class="truncate text-subTitle">{{ item.description }}</p>

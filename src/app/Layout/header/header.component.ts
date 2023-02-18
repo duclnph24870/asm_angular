@@ -8,6 +8,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { DataService } from 'src/app/services/data.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { Table } from 'src/app/interfaces/table';
+import { TableService } from 'src/app/services/table.service';
 
 @Component({
     selector: 'app-header',
@@ -18,7 +20,7 @@ export class HeaderComponent implements OnInit {
     @Input() searchVl: string = '';
     workspaces: Workspace[] = [];
     category: Category[] = [];
-    tickWorkspace: Workspace[] = [];
+    tickTable: Table[] = [];
     isVisible: boolean = false;
     status: number = -1;
     searchResult: Workspace[] = [];
@@ -29,6 +31,7 @@ export class HeaderComponent implements OnInit {
         private messService: NzMessageService,
         private dataSerice: DataService,
         private userService: UserService,
+        private tableService: TableService,
     ) {}
     createWorkspace = new FormGroup({
         name: new FormControl(
@@ -46,9 +49,9 @@ export class HeaderComponent implements OnInit {
             this.workspaces = res;
         });
         // Lấy ra các wp đã đánh dấu
-        this.workspaceService.getWorkspaceTick(1);
-        this.dataSerice.wpTick.subscribe((res) => {
-            this.tickWorkspace = res;
+        this.tableService.getTableTick();
+        this.dataSerice.tableTickCurr.subscribe((res) => {
+            this.tickTable = res;
         });
 
         // lấy thông tin user login
@@ -76,7 +79,6 @@ export class HeaderComponent implements OnInit {
             .createWorkspace({
                 ...this.createWorkspace.value,
                 members: [],
-                image: 'https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg',
             })
             .subscribe(
                 (value) => {

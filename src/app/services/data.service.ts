@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Table } from '../interfaces/table';
 import { User } from '../interfaces/user';
 import { Workspace } from '../interfaces/workspace';
 
@@ -8,10 +9,10 @@ import { Workspace } from '../interfaces/workspace';
 })
 export class DataService {
     private workspace = new BehaviorSubject<Workspace[]>([]);
-    private workspaceTick = new BehaviorSubject<Workspace[]>([]);
+    private tableTick = new BehaviorSubject<Table[]>([]);
     private userLogin = new BehaviorSubject<User[]>([]);
     currentWorkspace = this.workspace.asObservable();
-    wpTick = this.workspaceTick.asObservable();
+    tableTickCurr = this.tableTick.asObservable();
     user = this?.userLogin.asObservable();
 
     constructor() {}
@@ -20,8 +21,8 @@ export class DataService {
         this.workspace.next(data);
     }
 
-    setWpTick(data: Workspace[]) {
-        this.workspaceTick.next(data);
+    setTableTick(data: Table[]) {
+        this.tableTick.next(data);
     }
 
     setUser(data: User[]) {
