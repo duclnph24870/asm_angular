@@ -17,6 +17,8 @@ module.exports = {
             disabled: '#f5f6f8',
             inputHover: '#ebecf0',
             red: '#f87171',
+            text: '#172b4d',
+            hover: '#e7e9ed',
         },
     },
     plugins: [],

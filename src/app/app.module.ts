@@ -24,11 +24,20 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistorComponent } from './Pages/registor/registor.component';
+import { WorkspaceItemComponent } from './components/workspaceItem.component';
 
 registerLocaleData(en);
 
 @NgModule({
-    declarations: [AppComponent, HeaderComponent, HomeComponent, LayoutComponent, LoginComponent, RegistorComponent],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        LayoutComponent,
+        LoginComponent,
+        RegistorComponent,
+        WorkspaceItemComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

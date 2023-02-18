@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class="flex items-start justify-center mt-10">
+    <div class="w-[250px] flex flex-col">
+        <a
+            routerLink="/"
+            routerLinkActive="text-primary hover:text-primary bg-[#e4f0f6] hover:bg-[#e4f0f6]"
+            class="flex items-center font-bold p-2 hover:bg-[#e7e9ed] mb-1 rounded-[3px] cursor-pointer"
+        >
+            <span nz-icon nzType="radar-chart" class="mr-2" nzTheme="outline"></span> Trang chủ
+        </a>
+        <a
+            routerLink="/table"
+            routerLinkActive="text-primary hover:text-primary bg-[#e4f0f6] hover:bg-[#e4f0f6]"
+            class="flex items-center font-bold p-2 hover:bg-[#e7e9ed] mb-1 rounded-[3px] cursor-pointer"
+        >
+            <span nz-icon nzType="appstore" class="mr-2" nzTheme="outline"></span> Bảng
+        </a>
+
+        <div class="h-[1px] w-full shadow-input"></div>
+
+        <div class="home-workspace my-2">
+            <h1 class="font-semibold text-subTitle text-[12px] flex items-center">
+                Các không gian làm việc
+                <span nz-icon nzType="plus" class="ml-auto text-[14px]" nzTheme="outline"></span>
+            </h1>
+
+            <div class="home-listWp">
+                <div *ngFor="let item of dataWorkspace">
+                    <app-workspaceItem [data]="item"></app-workspaceItem>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-[825px] mx-4">2</div>
+</div>
