@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Table } from '../interfaces/table';
-import { User } from '../interfaces/user';
 import { Workspace } from '../interfaces/workspace';
 
 @Injectable({
@@ -10,12 +9,17 @@ import { Workspace } from '../interfaces/workspace';
 export class DataService {
     private workspace = new BehaviorSubject<Workspace[]>([]);
     private tableTick = new BehaviorSubject<Table[]>([]);
-    private userLogin = new BehaviorSubject<User[]>([]);
+    private userLogin = new BehaviorSubject<any>({});
     private tableWorkspace = new BehaviorSubject<any>([]);
+    private visibleModalCreateTable = new BehaviorSubject<any>({
+        status: false,
+        id: null,
+    });
     tableWorkspaceData = this.tableWorkspace.asObservable();
     currentWorkspace = this.workspace.asObservable();
     tableTickCurr = this.tableTick.asObservable();
     user = this?.userLogin.asObservable();
+    visibleModalCreateTableCurr = this.visibleModalCreateTable.asObservable();
 
     constructor() {}
 
@@ -27,11 +31,15 @@ export class DataService {
         this.tableTick.next(data);
     }
 
-    setUser(data: User[]) {
+    setUser(data: any) {
         this.userLogin.next(data);
     }
 
     setTableWp(data: any) {
         this.tableWorkspace.next(data);
+    }
+
+    setModalCreateTable(data: any) {
+        this.visibleModalCreateTable.next(data);
     }
 }

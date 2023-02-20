@@ -22,7 +22,7 @@
             "email": "duclnph24870@fpt.edu.vn",
             "password": "ngocduc13102001",
             "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1],
+            "tick": [1, 2, 3],
             "role": 0
         }
     ],
@@ -101,6 +101,34 @@
             "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
             "title": "Quản lý database",
             "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+        },
+        {
+            "bg": "https://images.unsplash.com/photo-1676641657719-17508c702a7d",
+            "title": "helo",
+            "workspace": 2,
+            "description": "123",
+            "id": 8
+        },
+        {
+            "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
+            "title": "hello",
+            "workspace": 1,
+            "description": "",
+            "id": 9
+        },
+        {
+            "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
+            "title": "12",
+            "workspace": 2,
+            "description": "",
+            "id": 10
+        },
+        {
+            "bg": "https://images.unsplash.com/photo-1676641657719-17508c702a7d",
+            "title": "1232",
+            "workspace": 1,
+            "description": null,
+            "id": 11
         }
     ],
     "list": [

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Table } from '../interfaces/table';
+import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-tableItem',
@@ -36,13 +37,27 @@ import { Table } from '../interfaces/table';
                 ></span>
             </p>
         </div>
-        <div *ngIf="create" class="flex justify-center items-center w-full h-full">Tạo bảng mới</div>`,
+        <div
+            *ngIf="create"
+            class="flex top-0 left-0 justify-center items-center w-full h-full absolute"
+            (click)="showCreateModal()"
+        >
+            Tạo bảng mới
+        </div>`,
 })
 export class TableItemComponent implements OnInit {
     @Input() start: boolean = false;
     @Input() create: boolean = false;
     @Input() data: any = {};
-    constructor() {}
+    @Input() id: number = -1;
+    constructor(private dataService: DataService) {}
 
     ngOnInit() {}
+
+    showCreateModal() {
+        this.dataService.setModalCreateTable({
+            status: true,
+            id: this.id,
+        });
+    }
 }

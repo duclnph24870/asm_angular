@@ -6,6 +6,8 @@ module.exports = {
             boxShadow: {
                 input: 'inset 0 0 0 2px #dfe1e6',
                 inputFocus: 'inset 0 0 0 2px #0079bf',
+                modal: '0 0 5px #091e3f14',
+                image: '0 7px 15px rgba(0, 0, 0, 0.15)',
             },
         },
         colors: {
@@ -19,6 +21,7 @@ module.exports = {
             red: '#f87171',
             text: '#172b4d',
             hover: '#e7e9ed',
+            overlay: 'rgba(0,0,0,0.4)',
         },
     },
     plugins: [],

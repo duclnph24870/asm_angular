@@ -22,6 +22,7 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistorComponent } from './Pages/registor/registor.component';
 import { WorkspaceItemComponent } from './components/workspaceItem.component';
@@ -54,6 +55,7 @@ registerLocaleData(en);
         ReactiveFormsModule,
         NzMessageModule,
         NzInputModule,
+        NzRadioModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: en_US }],
     bootstrap: [AppComponent],

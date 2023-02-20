@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     isVisible: boolean = false;
     status: number = -1;
     searchResult: Workspace[] = [];
-    userLogin: User[] = [];
+    userLogin: any = {};
     constructor(
         private workspaceService: WorkspaceService,
         private categoryService: CategoryService,

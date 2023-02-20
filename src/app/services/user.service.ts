@@ -51,7 +51,7 @@ export class UserService {
                 .get<User[]>(this.baseUrl + '/user?id=' + idUser)
                 .pipe(catchError(this.handleError))
                 .subscribe((res) => {
-                    this.dataService.setUser(res);
+                    this.dataService.setUser(res[0]);
                 });
         } else {
             this.messService.warning('Bạn cần đăng nhập để sử dụng chức năng này', { nzDuration: 3000 });

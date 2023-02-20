@@ -45,12 +45,6 @@
                 [start]="true"
                 class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
             ></app-tableItem>
-            <app-tableItem
-                *ngIf="tableTickData.length < 8"
-                [start]="false"
-                [create]="true"
-                class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
-            ></app-tableItem>
         </div>
 
         <h1 class="text-[16px] mb-5 font-bold uppercase text-subTitle">Các không gian làm việc của bạn</h1>
@@ -93,6 +87,7 @@
                 <app-tableItem
                     *ngIf="itemWp.tableData.length < 8"
                     [start]="false"
+                    [id]="itemWp?.id"
                     [create]="true"
                     class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
                 ></app-tableItem>

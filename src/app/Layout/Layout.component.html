@@ -1,0 +1,101 @@
+<div class="container">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+</div>
+<nz-modal
+    [(nzVisible)]="dataModal.status"
+    nzWidth="304px"
+    [nzClosable]="false"
+    [nzFooter]="null"
+    [nzCentered]="true"
+    (nzOnCancel)="handleCancel()"
+>
+    <ng-container *nzModalContent>
+        <div class="shadow-modal p-3 pt-0 flex flex-col items-center">
+            <h1 class="w-full h-[40px] flex items-center justify-center text-subTitle">Tạo bảng</h1>
+            <div class="h-[1px] w-full shadow-input"></div>
+            <div
+                class="h-[120px] w-[200px] min-w-[200px] rounded-[3px] shadow-image my-3 flex items-center justify-center"
+                style="
+                    background-image: url(../../assets/images/bg-1.jfif);
+                    background-size: 100% 100%;
+                    background-position: center;
+                "
+            >
+                <img class="w-[186px] min-w-[186px] h-[103px]" src="../../assets/images/creatTable.svg" alt="" />
+            </div>
+            <form class="flex flex-col w-full" [formGroup]="createTableForm" (ngSubmit)="onSubmit()">
+                <h1 class="mt-3 mb-1 text-[12px] text-subTitle font-bold w-full">Phông nền</h1>
+                <div class="w-full">
+                    <style>
+                        label::before {
+                            display: none !important;
+                        }
+
+                        label.ant-radio-button-wrapper-checked .overlay-bg {
+                            display: flex;
+                        }
+                    </style>
+                    <nz-radio-group formControlName="bg" class="flex items-center mx-[-8px]">
+                        <label
+                            nz-radio-button
+                            class="w-[calc(100%/4)] px-[8px] h-[40px] p-0 relative"
+                            *ngFor="let item of bgData"
+                            [nzValue]="item"
+                            style="border: none !important"
+                        >
+                            <img src="{{ item }}" alt="" class="w-full h-full rounded-[3px]" />
+                            <div
+                                class="absolute w-[calc(100%-16px)] overlay-bg h-full rounded-[3px] hidden flex items-center justify-center bg-overlay top-0 left-[8px]"
+                            >
+                                <span nz-icon nzType="check" class="text-white" nzTheme="outline"></span>
+                            </div>
+                        </label>
+                    </nz-radio-group>
+                </div>
+                <div class="input-group mt-[12px] flex flex-col">
+                    <label class="font-bold text-[#5e6c84] text-[12px] mb-1"
+                        >Tiêu đề bảng <span class="text-red">*</span></label
+                    >
+                    <input
+                        class="w-full hover:bg-inputHover focus:bg-white rounded-[3px] outline-0 block h-[36px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                        type="text"
+                        formControlName="title"
+                    />
+                    <p class="description text-[12px] text-text">👋 Tiêu đề bảng là bắt buộc</p>
+                </div>
+
+                <div class="input-group mt-[12px] flex flex-col">
+                    <label class="font-bold text-[#5e6c84] text-[12px] mb-1">Không gian làm việc</label>
+
+                    <nz-select
+                        nzPlaceHolder="Chọn ..."
+                        nzAllowClear
+                        class="[&>.ant-select-selector]:hover:bg-inputHover"
+                        formControlName="workspace"
+                    >
+                        <nz-option *ngFor="let o of dataWorkspace" [nzValue]="o.id" [nzLabel]="o.name"></nz-option>
+                    </nz-select>
+                </div>
+
+                <div class="input-group mt-[12px] flex flex-col">
+                    <label class="font-bold text-[12px] mb-1">Mô tả</label>
+                    <textarea
+                        class="w-full hover:bg-inputHover rounded-[3px] outline-0 focus:bg-white block h-[80px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                        cols="30"
+                        rows="10"
+                        formControlName="description"
+                    ></textarea>
+                    <p class="description text-[12px] text-[#6B778C]">Đưa ra mô tả cho bảng của không gian làm việc.</p>
+                </div>
+
+                <button
+                    class="w-full h-[32px] rounded-[3px] bg-primary text-white shadow-md mt-[12px] disabled:bg-disabled disabled:text-[#a5adba] disabled:shadow-none"
+                    [disabled]="!createTableForm.valid || status === 0"
+                >
+                    Tạo mới
+                </button>
+            </form>
+        </div>
+    </ng-container>
+</nz-modal>
