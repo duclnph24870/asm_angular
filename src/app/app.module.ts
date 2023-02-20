@@ -25,6 +25,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistorComponent } from './Pages/registor/registor.component';
 import { WorkspaceItemComponent } from './components/workspaceItem.component';
+import { TableItemComponent } from './components/tableItem.component';
 
 registerLocaleData(en);
 
@@ -36,6 +37,7 @@ registerLocaleData(en);
         LayoutComponent,
         LoginComponent,
         RegistorComponent,
+        TableItemComponent,
         WorkspaceItemComponent,
     ],
     imports: [

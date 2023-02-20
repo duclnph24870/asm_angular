@@ -34,4 +34,29 @@ export class TableService {
             });
         });
     }
+
+    getTableWorkspace() {
+        this.getAllTables().subscribe((res) => {
+            this.dataService.currentWorkspace.subscribe((data) => {
+                const idData = data.map((item) => item.id);
+
+                // lấy ra tất cả table của từng wp
+                const tableData = res.filter((item) => {
+                    return idData.includes(item.workspace);
+                });
+
+                const dataTable = data.map((item) => {
+                    let tableWp = [];
+                    tableWp = tableData.filter((itemTb) => itemTb.workspace === item.id);
+
+                    return {
+                        ...item,
+                        tableData: tableWp,
+                    };
+                });
+
+                this.dataService.setTableWp(dataTable);
+            });
+        });
+    }
 }

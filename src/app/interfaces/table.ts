@@ -3,4 +3,5 @@ export interface Table {
     workspace: number;
     bg: string;
     title: string;
+    description: string;
 }

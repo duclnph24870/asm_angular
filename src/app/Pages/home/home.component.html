@@ -30,35 +30,73 @@
             </div>
         </div>
     </div>
+    <!-- content main  -->
+
     <div class="w-[825px] mx-4">
+        <h1 class="text-[16px] mb-[18px] font-bold uppercase text-subTitle flex items-center">
+            <span nz-icon nzType="star" class="mr-2 text-[16px] relative top-[1px]" nzTheme="outline"></span>
+            Bảng đánh dấu sao
+        </h1>
+
+        <div class="flex items-center w-full mx-[-8px] mb-12 flex-wrap">
+            <app-tableItem
+                *ngFor="let tickItem of tableTickData"
+                [data]="tickItem"
+                [start]="true"
+                class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
+            ></app-tableItem>
+            <app-tableItem
+                *ngIf="tableTickData.length < 8"
+                [start]="false"
+                [create]="true"
+                class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
+            ></app-tableItem>
+        </div>
+
         <h1 class="text-[16px] mb-5 font-bold uppercase text-subTitle">Các không gian làm việc của bạn</h1>
-        <header class="flex items-center">
-            <img
-                src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg"
-                alt=""
-                class="w-[32px] h-[32px] rounded-[3px] mr-1.5"
-            />
-            <h2 class="text-text font-bold text-[16px] truncate max-w-[231px] w-[231px]">
-                Dự án quản lý trường Bột xuyên
-            </h2>
+        <div *ngFor="let itemWp of tableWpData">
+            <header class="flex items-center mb-[18px]">
+                <div
+                    class="img min-w-[32px] mr-2 w-[32px] h-[32px] rounded-[3px] shadow-sm bg-[#006e49] text-[20px] flex items-center justify-center text-white font-bold text-center"
+                >
+                    {{ itemWp?.name?.charAt(0) }}
+                </div>
+                <h2 class="text-text font-bold text-[16px] truncate max-w-[231px] w-[231px]">
+                    {{ itemWp?.name }}
+                </h2>
 
-            <a
-                class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
-            >
-                <span nz-icon nzType="appstore" class="mr-2" nzTheme="outline"></span> Bảng
-            </a>
+                <a
+                    class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
+                >
+                    <span nz-icon nzType="appstore" class="mr-2" nzTheme="outline"></span> Bảng
+                </a>
 
-            <a
-                class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
-            >
-                <span nz-icon nzType="usergroup-add" class="mr-2" nzTheme="outline"></span> Thành viên
-            </a>
+                <a
+                    class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
+                >
+                    <span nz-icon nzType="usergroup-add" class="mr-2" nzTheme="outline"></span> Thành viên
+                </a>
 
-            <a
-                class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
-            >
-                <span nz-icon nzType="setting" class="mr-2" nzTheme="outline"></span> Cài đặt
-            </a>
-        </header>
+                <a
+                    class="flex items-center text-[14px] py-1.5 px-3 rounded-[3px] bg-[#091e420a] ml-2 text-[#172b4d] hover:bg-hover"
+                >
+                    <span nz-icon nzType="setting" class="mr-2" nzTheme="outline"></span> Cài đặt
+                </a>
+            </header>
+
+            <div class="flex items-center w-full mx-[-8px] mb-8 flex-wrap">
+                <app-tableItem
+                    *ngFor="let tableItemWp of itemWp.tableData"
+                    [data]="tableItemWp"
+                    class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
+                ></app-tableItem>
+                <app-tableItem
+                    *ngIf="itemWp.tableData.length < 8"
+                    [start]="false"
+                    [create]="true"
+                    class="min-w-[calc(100%/4)] mb-4 before:rounded-[3px] cursor-pointer w-[calc(100%/4)] h-[96px] px-[8px] relative before:absolute before:content-[''] before:w-[calc(100%-16px)] before:h-full before:bg-[rgba(0,0,0,0.1)] before:top-0 before:left-[8px]"
+                ></app-tableItem>
+            </div>
+        </div>
     </div>
 </div>
