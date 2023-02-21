@@ -1,0 +1,18 @@
+.right-table {
+    transform: translateX(500px);
+    transition: all 100ms ease-in;
+
+    &.active {
+        transform: translateX(0);
+    }
+}
+
+.content-table {
+    &::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #66a4c7;
+    }
+}

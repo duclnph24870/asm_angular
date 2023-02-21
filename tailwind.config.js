@@ -10,9 +10,13 @@ module.exports = {
                 image: '0 7px 15px rgba(0, 0, 0, 0.15)',
                 container: 'inset 0 0 0 2px rgba(255,255,255,0.16)',
             },
+            backgroundImage: {
+                linear: 'linear-gradient(180deg, #005c90, #0066a0)',
+            },
         },
         colors: {
             primary: '#0066a0',
+            primaryLight: '#337da7 ',
             buttonHover: '#025586',
             white: '#fff',
             none: 'transparent',

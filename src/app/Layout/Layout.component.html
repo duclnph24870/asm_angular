@@ -1,6 +1,8 @@
-<div class="container h-full">
+<div class="container h-full flex flex-col">
     <app-header></app-header>
-    <router-outlet></router-outlet>
+    <div class="content w-full h-[calc(100vh-44px)] overflow-y-hidden" style="flex: 1">
+        <router-outlet></router-outlet>
+    </div>
 </div>
 <nz-modal
     [(nzVisible)]="dataModal.status"

@@ -1,1 +1,112 @@
-<p>table works!</p>
+<div class="bg-primary w-full h-full">
+    <div class="relative h-full">
+        <!-- header  -->
+        <header
+            class="py-2 px-3 pl-9 h-[48px] bg-[rgba(0,0,0,0.1)] relative before:absolute before:content[''] before:w-[calc(100%-1px)] before:h-[50px] before:top-[calc(100%)] before:left-[1px] before:bg-linear"
+        >
+            <div class="flex items-center">
+                <h1 class="text-[18px] font-bold text-white mr-2">Test 3</h1>
+                <button
+                    class="bg-primaryLight h-[32px] rounded-[3px] text-white p-1.5 px-3 flex items-center justify-center hover:[&>span]:text-[#ffc526]"
+                >
+                    <span nz-icon nzType="star" class="text-white text-[16px]" zTheme="outline"></span>
+                </button>
+                <div class="w-[1px] h-[16px] bg-[rgba(255,255,255,0.16)] mx-2"></div>
+                <button
+                    class="bg-primaryLight h-[32px] rounded-[3px] text-white p-1.5 px-3 flex items-center justify-center"
+                >
+                    <span nz-icon nzType="user" class="text-white text-[14px] mr-2" nzTheme="outline"></span>
+                    Hiển thị trong không gian làm việc
+                </button>
+
+                <button
+                    class="ml-auto bg-primaryLight h-[32px] rounded-[3px] text-white p-1.5 px-3 flex items-center justify-center"
+                >
+                    <span nz-icon nzType="filter" class="text-white text-[14px] mr-2" nzTheme="outline"></span>
+                    Lọc
+                </button>
+                <div class="w-[1px] h-[16px] bg-[rgba(255,255,255,0.16)] mx-2"></div>
+                <img
+                    class="rounded-[50%] w-[28px] h-[28px] mr-2"
+                    src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg"
+                    alt=""
+                />
+
+                <button class="bg-white h-[32px] rounded-[3px] p-1.5 px-3 flex items-center justify-center">
+                    <span nz-icon nzType="user-add" class="text-[14px] mr-2" nzTheme="outline"></span>
+                    Chia sẻ
+                </button>
+
+                <div class="w-[1px] h-[16px] bg-[rgba(255,255,255,0.16)] mx-2"></div>
+
+                <button
+                    (click)="changeShowMenu(true)"
+                    class="bg-primaryLight h-[32px] rounded-[3px] text-white p-1.5 px-3 flex items-center justify-center"
+                >
+                    <span nz-icon nzType="ellipsis" class="text-white text-[20px]" nzTheme="outline"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- menu  -->
+        <div
+            class="right-table absolute z-10 w-[339px] h-full top-0 right-0 bg-[#f4f5f7] p-3"
+            [class.active]="menuTableShow"
+        >
+            <h1 class="flex items-center h-[48px]">
+                <span class="text-text font-semibold relative text-[16px] text-center w-full">Menu</span>
+                <span
+                    (click)="changeShowMenu(false)"
+                    nz-icon
+                    nzType="close"
+                    class="text-[18px] cursor-pointer"
+                    nzTheme="outline"
+                ></span>
+            </h1>
+            <div class="h-[1px] w-full shadow-input bg-primary mb-2 mt-0.5"></div>
+            <div class="w-full">
+                <div class="text-text p-1.5 font-semibold flex items-center cursor-pointer">
+                    <span nz-icon nzType="bg-colors" class="w-[40px] text-[18px]" nzTheme="outline"></span>Thay đổi hình
+                    nền
+                </div>
+                <div class="text-red p-1.5 font-semibold flex items-center cursor-pointer">
+                    <span nz-icon nzType="delete" class="w-[40px] text-[18px]" nzTheme="outline"></span>Xóa bảng
+                </div>
+            </div>
+            <div class="h-[1px] w-full shadow-input bg-primary mb-4 mt-0.5"></div>
+            <h1 class="flex items-center font-semibold my-2">
+                <span nz-icon nzType="unordered-list" class="mr-2 text-[16px]" nzTheme="outline"></span> Hoạt động
+            </h1>
+
+            <div class="flex flex-col h-full overflow-y-scroll">
+                <div class="flex items-center my-2">
+                    <img
+                        class="w-[32px] h-[32px] rounded-[50%] mr-2"
+                        src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg"
+                        alt=""
+                    />
+                    <div>
+                        <span class="font-bold">Đức Ngọc</span>
+                        đã thêm danh sách hello vào bảng này
+                        <p class="text-[12px] text-subTitle">Hôm qua lúc 19:23</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- content  -->
+        <div class="content-table pl-5 w-full h-[calc(100%-50px)] relative z-1 flex items-start overflow-x-scroll py-3">
+            <div
+                class="listItem bg-[#ebecf0] rounded-[3px] mx-3 max-h-full p-2 w-[273px] min-w-[273px] overflow-y-scroll"
+            >
+                <div class="h-[40px] py-2.5 px-2.5 flex items-center">
+                    <h1 class="font-semibold mr-auto">Cần làm</h1>
+                    <span nz-icon nzType="ellipsis" class="" nzTheme="outline"></span>
+                </div>
+                <app-createCard></app-createCard>
+            </div>
+
+            <app-createList></app-createList>
+        </div>
+    </div>
+</div>

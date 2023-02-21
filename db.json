@@ -135,11 +135,28 @@
         {
             "id": 1,
             "table": 1,
-            "members": [],
+            "title": "Thông tin thành viên dự án"
+        }
+    ],
+    "cards": [
+        {
+            "id": 1,
+            "title": "Test",
+            "list": 1,
+            "members": [1, 2],
             "status": 0,
-            "title": "Thông tin thành viên dự án",
             "createDate": "13/10/2001",
             "expiredDate": "13/10/2002"
+        }
+    ],
+    "activityTracking": [
+        {
+            "id": 1,
+            "table": 1,
+            "imgUser": "",
+            "userName": "Ngọc Đức",
+            "act": "đã tạo mới bảng table",
+            "time": "13/10/2001"
         }
     ]
 }

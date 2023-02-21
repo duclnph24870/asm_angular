@@ -1,5 +1,5 @@
-<div class="workspacePage h-full flex overflow-hidden items-center relative">
-    <div class="absolute h-[1px] w-full shadow-container bg-primary top-0 left-0"></div>
+<div class="workspacePage h-full flex items-center relative">
+    <div class="absolute h-[1px] z-10 w-full shadow-container bg-primary top-0 left-0"></div>
     <div class="workspacePage-left h-full bg-primary" [class.active]="widthAside">
         <div class="flex items-center px-[14px] py-3">
             <div
@@ -42,7 +42,7 @@
             </div>
 
             <!-- table list  -->
-            <h1 class="flex items-center pl-4 pr-3 mt-1.5 py-1">
+            <h1 class="flex items-center pl-4 pr-3 mt-1.5 py-1 h-full">
                 <p class="text-white font-bold">Các bảng của bạn</p>
                 <span
                     (click)="showModalCreateTable()"
@@ -79,9 +79,26 @@
             </div>
         </div>
     </div>
-    <div class="right w-full h-full relative">
-        <div class="absolute h-full w-[1px] shadow-container bg-primary top-0 left-0"></div>
+    <!-- right  -->
+    <div class="right w-full h-full relative overflow-hidden">
+        <div
+            class="absolute borderCustom h-full w-[1px] shadow-container bg-primary top-0 left-0"
+            [class.active]="!widthAside"
+        ></div>
+        <div
+            *ngIf="!widthAside"
+            class="absolute z-10 h-full min-w-[15px] w-[15px] top-0 left-0 bg-[rgba(255,255,255,0.16)]"
+        >
+            <div class="relative w-full h-full">
+                <div class="absolute h-full z-2 w-[1px] shadow-container bg-primary top-0 right-0"></div>
+                <button
+                    (click)="actionAside(true)"
+                    class="absolute top-[20px] right-[-12px] w-[24px] h-[24px] bg-buttonHover flex items-center justify-center rounded-[50%]"
+                >
+                    <span nz-icon nzType="right" class="text-white text-[12px]" nzTheme="outline"></span>
+                </button>
+            </div>
+        </div>
         <router-outlet></router-outlet>
-        <button (click)="actionAside(true)">></button>
     </div>
 </div>

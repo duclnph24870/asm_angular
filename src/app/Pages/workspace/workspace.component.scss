@@ -24,3 +24,9 @@
         color: #ffc526;
     }
 }
+
+.borderCustom {
+    &.active {
+        display: none;
+    }
+}

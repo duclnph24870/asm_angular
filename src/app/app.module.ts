@@ -29,6 +29,8 @@ import { WorkspaceItemComponent } from './components/workspaceItem.component';
 import { TableItemComponent } from './components/tableItem.component';
 import { WorkspaceComponent } from './Pages/workspace/workspace.component';
 import { TableComponent } from './components/table/table.component';
+import { CreateCardComponent } from './components/createCard.component';
+import { CreateListComponent } from './components/createList.component';
 
 registerLocaleData(en);
 
@@ -44,6 +46,8 @@ registerLocaleData(en);
         WorkspaceItemComponent,
         WorkspaceComponent,
         TableComponent,
+        CreateCardComponent,
+        CreateListComponent,
     ],
     imports: [
         BrowserModule,
