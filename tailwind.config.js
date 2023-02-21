@@ -8,10 +8,11 @@ module.exports = {
                 inputFocus: 'inset 0 0 0 2px #0079bf',
                 modal: '0 0 5px #091e3f14',
                 image: '0 7px 15px rgba(0, 0, 0, 0.15)',
+                container: 'inset 0 0 0 2px rgba(255,255,255,0.16)',
             },
         },
         colors: {
-            primary: '#026aa7',
+            primary: '#0066a0',
             buttonHover: '#025586',
             white: '#fff',
             none: 'transparent',

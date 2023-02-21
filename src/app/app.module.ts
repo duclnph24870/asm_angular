@@ -27,6 +27,8 @@ import { LoginComponent } from './Pages/login/login.component';
 import { RegistorComponent } from './Pages/registor/registor.component';
 import { WorkspaceItemComponent } from './components/workspaceItem.component';
 import { TableItemComponent } from './components/tableItem.component';
+import { WorkspaceComponent } from './Pages/workspace/workspace.component';
+import { TableComponent } from './components/table/table.component';
 
 registerLocaleData(en);
 
@@ -40,6 +42,8 @@ registerLocaleData(en);
         RegistorComponent,
         TableItemComponent,
         WorkspaceItemComponent,
+        WorkspaceComponent,
+        TableComponent,
     ],
     imports: [
         BrowserModule,

@@ -15,11 +15,14 @@ export class DataService {
         status: false,
         id: null,
     });
+    private widthAsideWorkspacePage = new BehaviorSubject<boolean>(true);
+
     tableWorkspaceData = this.tableWorkspace.asObservable();
     currentWorkspace = this.workspace.asObservable();
     tableTickCurr = this.tableTick.asObservable();
     user = this?.userLogin.asObservable();
     visibleModalCreateTableCurr = this.visibleModalCreateTable.asObservable();
+    widthAsideWorkspace = this.widthAsideWorkspacePage.asObservable();
 
     constructor() {}
 
@@ -41,5 +44,9 @@ export class DataService {
 
     setModalCreateTable(data: any) {
         this.visibleModalCreateTable.next(data);
+    }
+
+    setWidthAsideWp(status: boolean) {
+        this.widthAsideWorkspacePage.next(status);
     }
 }

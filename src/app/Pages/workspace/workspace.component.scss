@@ -1,0 +1,26 @@
+.workspacePage-left {
+    width: 0px;
+    overflow: hidden;
+    transition: all 100ms ease-in;
+}
+
+.workspacePage-left.active {
+    width: 260px;
+    min-width: 260px;
+}
+
+.workspacePage-left ~ .right {
+    transition: all 100ms ease-in;
+}
+
+.tableWpItem {
+    cursor: pointer;
+    transition: all 0.1s linear;
+    &:hover span.hidden {
+        display: block;
+    }
+
+    span.active {
+        color: #ffc526;
+    }
+}
