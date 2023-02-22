@@ -23,6 +23,14 @@ export class TableService {
         return this.httpClient.get<Table[]>(this.baseUrl + '/tables').pipe(catchError(this.handleError));
     }
 
+    getTableWpOne(idWp: number) {
+        return this.httpClient.get<Table[]>(this.baseUrl + '/tables?workspace=' + idWp);
+    }
+
+    getTableOne(id: number) {
+        return this.httpClient.get<Table[]>(this.baseUrl + '/tables?id=' + id).pipe(catchError(this.handleError));
+    }
+
     getTableTick() {
         this.dataService.user?.subscribe(({ tick }) => {
             this.getAllTables().subscribe((res) => {
@@ -30,6 +38,12 @@ export class TableService {
                 this.dataService.setTableTick(tickTableData);
             });
         });
+    }
+
+    getActivityTracking(idTable: number) {
+        return this.httpClient
+            .get(this.baseUrl + '/activityTracking?table=' + idTable)
+            .pipe(catchError(this.handleError));
     }
 
     getTableWorkspace() {
@@ -60,5 +74,10 @@ export class TableService {
     // POST
     createTable(data: any): Observable<Table[]> {
         return this.httpClient.post<Table[]>(this.baseUrl + '/tables', data).pipe(catchError(this.handleError));
+    }
+
+    //DELETE
+    deleteTable(id: number) {
+        return this.httpClient.delete<Table[]>(this.baseUrl + '/tables/' + id).pipe(catchError(this.handleError));
     }
 }

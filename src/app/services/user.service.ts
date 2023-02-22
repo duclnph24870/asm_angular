@@ -59,4 +59,42 @@ export class UserService {
             return;
         }
     }
+
+    // PUT
+    changeStart(idTable: number) {
+        let idUser = localStorage.getItem('idUser');
+
+        this.httpClient.get<User[]>(this.baseUrl + '/user?id=' + idUser).subscribe(([data]) => {
+            const tick: number[] = data.tick;
+            let check = tick.includes(idTable);
+            let newTick: number[] = [];
+            let newData = null;
+
+            if (check) {
+                newTick = tick.filter((item) => {
+                    return item !== idTable;
+                });
+            } else {
+                newTick = [...tick, idTable];
+            }
+
+            newData = {
+                ...data,
+                tick: newTick,
+            };
+
+            // sửa
+            this.httpClient
+                .put<User[]>(this.baseUrl + '/user/' + idUser, newData)
+                .pipe(catchError(this.handleError))
+                .subscribe(
+                    (res) => {
+                        this.getUser();
+                    },
+                    (error) => {
+                        this.messService.error('Đã xảy ra lỗi, vui lòng thử lại');
+                    },
+                );
+        });
+    }
 }

@@ -3,7 +3,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Workspace } from '../interfaces/workspace';
-import { User } from '../interfaces/user';
 import { DataService } from './data.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
@@ -39,6 +38,12 @@ export class WorkspaceService {
                     this.messService.error('Lỗi server');
                 },
             );
+    }
+
+    getWorkspaceOne(id: number) {
+        return this.httpClient
+            .get<Workspace[]>(this.baseUrl + '/workspace?id=' + id)
+            .pipe(catchError(this.handleError));
     }
 
     searchWorkspace(value: string): Observable<Workspace[]> {

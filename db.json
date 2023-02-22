@@ -1,162 +1,174 @@
 {
-    "workspace": [
-        {
-            "id": 1,
-            "name": "Dứ án giáo dục 1",
-            "members": [1, 2, 3, 4, 5, 6],
-            "category": 1,
-            "description": "description"
-        },
-        {
-            "id": 2,
-            "name": "Dứ án giáo dục 2",
-            "members": [1, 3, 4, 5, 6],
-            "category": 2,
-            "description": "description"
-        }
-    ],
-    "user": [
-        {
-            "id": 1,
-            "userName": "Ngọc Đức",
-            "email": "duclnph24870@fpt.edu.vn",
-            "password": "ngocduc13102001",
-            "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "tick": [1, 2, 3],
-            "role": 0
-        }
-    ],
-    "category": [
-        {
-            "id": 1,
-            "name": "Marketing"
-        },
-        {
-            "id": 2,
-            "name": "Điều hành"
-        },
-        {
-            "id": 3,
-            "name": "IT"
-        },
-        {
-            "id": 4,
-            "name": "Giáo dục"
-        },
-        {
-            "id": 5,
-            "name": "Nhân sự"
-        },
-        {
-            "id": 6,
-            "name": "Khác"
-        }
-    ],
-    "tables": [
-        {
-            "id": 1,
-            "workspace": 1,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 2,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 3,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 4,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 5,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 6,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "id": 7,
-            "workspace": 2,
-            "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
-            "title": "Quản lý database",
-            "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
-        },
-        {
-            "bg": "https://images.unsplash.com/photo-1676641657719-17508c702a7d",
-            "title": "helo",
-            "workspace": 2,
-            "description": "123",
-            "id": 8
-        },
-        {
-            "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
-            "title": "hello",
-            "workspace": 1,
-            "description": "",
-            "id": 9
-        },
-        {
-            "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
-            "title": "12",
-            "workspace": 2,
-            "description": "",
-            "id": 10
-        },
-        {
-            "bg": "https://images.unsplash.com/photo-1676641657719-17508c702a7d",
-            "title": "1232",
-            "workspace": 1,
-            "description": null,
-            "id": 11
-        }
-    ],
-    "list": [
-        {
-            "id": 1,
-            "table": 1,
-            "title": "Thông tin thành viên dự án"
-        }
-    ],
-    "cards": [
-        {
-            "id": 1,
-            "title": "Test",
-            "list": 1,
-            "members": [1, 2],
-            "status": 0,
-            "createDate": "13/10/2001",
-            "expiredDate": "13/10/2002"
-        }
-    ],
-    "activityTracking": [
-        {
-            "id": 1,
-            "table": 1,
-            "imgUser": "",
-            "userName": "Ngọc Đức",
-            "act": "đã tạo mới bảng table",
-            "time": "13/10/2001"
-        }
-    ]
+  "workspace": [
+    {
+      "id": 1,
+      "name": "Dứ án giáo dục 1",
+      "members": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "category": 1,
+      "description": "description"
+    },
+    {
+      "id": 2,
+      "name": "Dứ án giáo dục 2",
+      "members": [
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "category": 2,
+      "description": "description"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "userName": "Ngọc Đức",
+      "email": "duclnph24870@fpt.edu.vn",
+      "password": "ngocduc13102001",
+      "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "tick": [
+        2,
+        1
+      ],
+      "role": 0
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Điều hành"
+    },
+    {
+      "id": 3,
+      "name": "IT"
+    },
+    {
+      "id": 4,
+      "name": "Giáo dục"
+    },
+    {
+      "id": 5,
+      "name": "Nhân sự"
+    },
+    {
+      "id": 6,
+      "name": "Khác"
+    }
+  ],
+  "tables": [
+    {
+      "id": 1,
+      "workspace": 1,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 2,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 3,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 4,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 5,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 6,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "id": 7,
+      "workspace": 2,
+      "bg": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "title": "Quản lý database",
+      "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên"
+    },
+    {
+      "bg": "https://images.unsplash.com/photo-1676641657719-17508c702a7d",
+      "title": "helo",
+      "workspace": 2,
+      "description": "123",
+      "id": 8
+    },
+    {
+      "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
+      "title": "hello",
+      "workspace": 1,
+      "description": "",
+      "id": 9
+    },
+    {
+      "bg": "https://images.unsplash.com/photo-1676619487386-54adbabb8f3a",
+      "title": "12",
+      "workspace": 2,
+      "description": "",
+      "id": 10
+    }
+  ],
+  "list": [
+    {
+      "id": 1,
+      "table": 1,
+      "title": "Thông tin thành viên dự án"
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "title": "Test",
+      "list": 1,
+      "members": [
+        1,
+        2
+      ],
+      "status": 0,
+      "createDate": "13/10/2001",
+      "expiredDate": "13/10/2002"
+    }
+  ],
+  "activityTracking": [
+    {
+      "id": 1,
+      "table": 1,
+      "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "userName": "Ngọc Đức",
+      "act": "đã tạo mới bảng table",
+      "time": "13/10/2001"
+    }
+  ]
 }

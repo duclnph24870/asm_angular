@@ -4,7 +4,8 @@ import { DataService } from '../services/data.service';
 
 @Component({
     selector: 'app-tableItem',
-    template: ` <div
+    template: ` <a
+            routerLink="/workspace/{{ data.workspace }}/{{ data.id }}"
             *ngIf="!create"
             class="w-full h-full rounded-[3px] p-2 cursor-pointer flex flex-col justify-between z-[1] relative"
             style="
@@ -36,7 +37,7 @@ import { DataService } from '../services/data.service';
                     nzTheme="fill"
                 ></span>
             </p>
-        </div>
+        </a>
         <div
             *ngIf="create"
             class="flex top-0 left-0 justify-center items-center w-full h-full absolute"

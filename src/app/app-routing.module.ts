@@ -14,7 +14,7 @@ const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             {
-                path: 'workspace',
+                path: 'workspace/:idWp',
                 component: WorkspaceComponent,
                 children: [{ path: ':id', component: TableComponent }],
             },

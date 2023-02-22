@@ -5,10 +5,10 @@
             <div
                 class="img min-w-[36px] mr-2 w-[36px] h-[36px] rounded-[3px] shadow-sm bg-[#006e49] text-[20px] flex items-center justify-center text-white font-bold text-center"
             >
-                D
+                {{ dataWorkspace?.name?.charAt(0) }}
             </div>
             <div class="">
-                <p class="font-semibold text-white truncate w-[150px]">Test</p>
+                <p class="font-semibold text-white truncate w-[150px]">{{ dataWorkspace?.name }}</p>
                 <p class="text-[12px] text-white">Miến phí</p>
             </div>
             <button
@@ -53,29 +53,23 @@
                 ></span>
             </h1>
             <div class="">
-                <div
+                <a
+                    *ngFor="let item of tableData"
                     class="flex items-center pl-4 pr-3 h-[32px] hover:text-white hover:bg-[#3588b9] [&>span.active]:block tableWpItem"
+                    routerLink="/workspace/{{ idWp }}/{{ item?.id }}"
+                    routerLinkActive="bg-[#3588b9]"
                 >
-                    <img
-                        class="w-[32px] min-w[24px] h-[20px] rounded-[3px] mr-2"
-                        src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg"
-                        alt=""
-                    />
-                    <p class="truncate w-[180px] text-white">test</p>
-                    <span nz-icon nzType="star" class="ml-auto mr-1.5 text-white active hidden" nzTheme="fill"></span>
-                </div>
-
-                <div
-                    class="flex items-center pl-4 pr-3 h-[32px] hover:text-white hover:bg-[#3588b9] [&>span.active]:block tableWpItem"
-                >
-                    <img
-                        class="w-[32px] min-w[24px] h-[20px] rounded-[3px] mr-2"
-                        src="https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg"
-                        alt=""
-                    />
-                    <p class="truncate w-[180px] text-white">test</p>
-                    <span nz-icon nzType="star" class="ml-auto mr-1.5 text-white hidden" nzTheme="fill"></span>
-                </div>
+                    <img class="w-[32px] min-w[24px] h-[20px] rounded-[3px] mr-2" src="{{ item?.bg }}" alt="" />
+                    <p class="truncate w-[180px] text-white">{{ item?.title }}</p>
+                    <span
+                        (click)="changeTickTable(item?.id)"
+                        nz-icon
+                        nzType="star"
+                        class="ml-auto mr-1.5 text-white hidden"
+                        [class.active]="tickTableList.includes(item?.id)"
+                        nzTheme="fill"
+                    ></span>
+                </a>
             </div>
         </div>
     </div>
