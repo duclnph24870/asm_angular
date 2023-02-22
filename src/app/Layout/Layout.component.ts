@@ -19,11 +19,13 @@ export class LayoutComponent implements OnInit {
     status: number = 1;
     bgData: string[] = [];
     dataWorkspace: Workspace[] = [];
+    idUser: number = Number(localStorage.getItem('idUser'));
     createTableForm = new FormGroup({
         bg: new FormControl('https://images.unsplash.com/photo-1676619487386-54adbabb8f3a', Validators.required),
         title: new FormControl('', Validators.required),
         workspace: new FormControl(this.dataModal.id, Validators.required),
         description: new FormControl(''),
+        members: new FormControl([this.idUser]),
     });
     constructor(
         private userService: UserService,

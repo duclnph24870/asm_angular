@@ -4,4 +4,5 @@ export interface Table {
     bg: string;
     title: string;
     description: string;
+    members: number[];
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { List } from 'src/app/interfaces/list';
 import { DataService } from 'src/app/services/data.service';
+import { ListService } from 'src/app/services/list.service';
 import { TableService } from 'src/app/services/table.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -16,6 +18,7 @@ export class TableComponent implements OnInit {
     idTable: number = -1;
     tickTable: any = [];
     activityTrackingData: any = [];
+    listByTableData: List[] = [];
 
     constructor(
         private router: ActivatedRoute,
@@ -24,7 +27,13 @@ export class TableComponent implements OnInit {
         private messService: NzMessageService,
         private dataService: DataService,
         private userService: UserService,
+        private listService: ListService,
     ) {}
+
+    // lắng nghe sự thay đổi về data của list khi tạo mới
+    changeListByTable(data: List[]) {
+        this.listByTableData = data;
+    }
 
     changeShowMenu(isShow: boolean) {
         this.menuTableShow = isShow;
@@ -62,6 +71,11 @@ export class TableComponent implements OnInit {
             // lấy ra hoạt động của table
             this.tableService.getActivityTracking(id).subscribe((res) => {
                 this.activityTrackingData = res;
+            });
+
+            // lấy ra list của table
+            this.listService.getListByTable(id).subscribe((res) => {
+                this.listByTableData = res;
             });
         });
 

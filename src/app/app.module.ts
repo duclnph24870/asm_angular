@@ -32,6 +32,7 @@ import { WorkspaceComponent } from './Pages/workspace/workspace.component';
 import { TableComponent } from './components/table/table.component';
 import { CreateCardComponent } from './components/createCard.component';
 import { CreateListComponent } from './components/createList.component';
+import { CardComponent } from './components/card/card.component';
 
 registerLocaleData(en);
 
@@ -49,6 +50,7 @@ registerLocaleData(en);
         TableComponent,
         CreateCardComponent,
         CreateListComponent,
+        CardComponent,
     ],
     imports: [
         BrowserModule,

@@ -113,16 +113,17 @@
         <!-- content  -->
         <div class="content-table pl-5 w-full h-[calc(100%-50px)] relative z-1 flex items-start overflow-x-scroll py-3">
             <div
-                class="listItem bg-[#ebecf0] shadow-input rounded-[3px] mx-3 max-h-full p-2 w-[273px] min-w-[273px] overflow-y-scroll"
+                *ngFor="let listItem of listByTableData"
+                class="listItem bg-[#ebecf0] shadow-input rounded-[3px] mx-1.5 max-h-full p-2 w-[273px] min-w-[273px] overflow-y-scroll"
             >
                 <div class="h-[40px] py-2.5 px-2.5 flex items-center">
-                    <h1 class="font-semibold mr-auto">Cần làm</h1>
+                    <h1 class="font-semibold mr-auto truncate w-[170px]">{{ listItem?.title }}</h1>
                     <span nz-icon nzType="ellipsis" class="" nzTheme="outline"></span>
                 </div>
                 <app-createCard></app-createCard>
             </div>
 
-            <app-createList></app-createList>
+            <app-createList (updateListTable)="changeListByTable($event)" [idTable]="idTable"></app-createList>
         </div>
     </div>
 </div>
