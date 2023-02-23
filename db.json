@@ -40,6 +40,18 @@
         1
       ],
       "role": 0
+    },
+    {
+      "id": 2,
+      "userName": "Ngọc Đức",
+      "email": "duclnph248701@fpt.edu.vn",
+      "password": "ngocduc13102001",
+      "avatar": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "tick": [
+        2,
+        1
+      ],
+      "role": 0
     }
   ],
   "category": [
@@ -76,7 +88,8 @@
       "title": "Quản lý database",
       "description": "Dự án quản lý giáo dục trường tiểu học bột xuyên",
       "members": [
-        1
+        1,
+        2
       ]
     },
     {
@@ -134,79 +147,27 @@
   ],
   "cards": [
     {
-      "id": 1,
-      "title": "Test",
+      "title": "Test 22 3",
       "list": 1,
       "table": 1,
-      "label": "#333",
-      "members": [
-        1,
-        2
+      "label": "#7bc86c",
+      "date": [
+        "2023-02-21T20:36:38.000Z",
+        "2023-02-22T20:36:38.000Z"
       ],
-      "status": 0,
-      "createDate": "13/10/2001",
-      "expiredDate": "13/10/2002",
-      "successDate": "13/10/2022"
+      "id": 1
     },
     {
-      "table": 1,
-      "list": 1,
-      "title": "helllo",
-      "id": 2
-    },
-    {
-      "table": 1,
-      "list": 1,
-      "title": "helllo",
-      "id": 3
-    },
-    {
-      "table": 1,
-      "list": 1,
-      "title": "helllo",
-      "id": 4
-    },
-    {
-      "table": 1,
+      "title": "123",
       "list": 2,
-      "title": "fđss",
-      "id": 5
-    },
-    {
       "table": 1,
-      "list": 3,
-      "title": "dfd",
-      "id": 6
-    },
-    {
-      "table": 1,
-      "list": 1,
-      "title": "hrlo",
-      "id": 7
-    },
-    {
-      "table": 4,
-      "list": 4,
-      "title": "hello",
-      "id": 8
-    },
-    {
-      "table": 4,
-      "list": 4,
-      "title": "lo",
-      "id": 9
-    },
-    {
-      "table": 4,
-      "list": 4,
-      "title": "12",
-      "id": 10
-    },
-    {
-      "table": 1,
-      "list": 1,
-      "title": "12",
-      "id": 11
+      "label": "#7bc86c",
+      "date": [
+        "2023-02-19T20:57:36.836Z",
+        "2023-02-24T20:57:36.836Z"
+      ],
+      "id": 2,
+      "success": true
     }
   ],
   "activityTracking": [
@@ -222,105 +183,113 @@
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm danh sách hello",
-      "time": "23-02-2023 02:59:27",
+      "act": "đã thêm một thẻ vào danh sách hello",
+      "time": "24-02-2023 01:23:49",
       "id": 2
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm danh sách hrlo",
-      "time": "23-02-2023 17:51:37",
+      "act": "đã sửa thẻ hello",
+      "time": "24-02-2023 03:57:33",
       "id": 3
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách Thông tin thành viên dự án",
-      "time": "23-02-2023 18:08:08",
+      "act": "đã sửa thẻ hello",
+      "time": "24-02-2023 03:58:16",
       "id": 4
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách Thông tin thành viên dự án",
-      "time": "23-02-2023 18:17:06",
+      "act": "đã sửa thẻ hello",
+      "time": "24-02-2023 03:58:37",
       "id": 5
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hello",
-      "time": "23-02-2023 18:17:51",
+      "act": "đã sửa thẻ hello 2",
+      "time": "24-02-2023 04:03:16",
       "id": 6
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hello",
-      "time": "23-02-2023 18:18:29",
+      "act": "đã sửa thẻ Test",
+      "time": "24-02-2023 04:13:32",
       "id": 7
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hrlo",
-      "time": "23-02-2023 18:18:32",
+      "act": "đã sửa thẻ Test 2",
+      "time": "24-02-2023 04:14:35",
       "id": 8
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách Thông tin thành viên dự án",
-      "time": "23-02-2023 18:18:35",
+      "act": "đã sửa thẻ Test 22",
+      "time": "24-02-2023 04:15:56",
       "id": 9
     },
     {
-      "table": 4,
+      "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm danh sách hrloo",
-      "time": "23-02-2023 18:18:29",
+      "act": "đã sửa thẻ 123",
+      "time": "24-02-2023 04:15:56",
       "id": 10
     },
     {
-      "table": 4,
+      "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hrloo",
-      "time": "23-02-2023 18:18:45",
+      "act": "đã sửa thẻ Test 22 3",
+      "time": "24-02-2023 04:17:12",
       "id": 11
     },
     {
-      "table": 4,
+      "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hrloo",
-      "time": "23-02-2023 18:19:15",
+      "act": "đã sửa thẻ Test 22 3",
+      "time": "24-02-2023 04:17:12",
       "id": 12
     },
     {
-      "table": 4,
+      "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách hrloo",
-      "time": "23-02-2023 18:19:45",
+      "act": "đã sửa thẻ 123",
+      "time": "24-02-2023 04:17:12",
       "id": 13
     },
     {
       "table": 1,
       "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
       "userName": "Ngọc Đức",
-      "act": "đã thêm một thẻ vào danh sách Thông tin thành viên dự án",
-      "time": "23-02-2023 18:32:06",
+      "act": "đã sửa thẻ Test 22 3",
+      "time": "24-02-2023 04:39:04",
       "id": 14
+    },
+    {
+      "table": 1,
+      "imgUser": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/480x319/1ae4e99da27ed4f7fbcb064985b0aeca/photo-1588075592405-d3d4f0846961.jpg",
+      "userName": "Ngọc Đức",
+      "act": "đã sửa thẻ Test 22 3",
+      "time": "24-02-2023 04:39:04",
+      "id": 15
     }
   ]
 }

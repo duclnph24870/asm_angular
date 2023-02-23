@@ -4,9 +4,7 @@ export interface Card {
     list: number;
     table: number;
     members?: number[];
-    status?: number;
+    success?: boolean;
     label?: string;
-    createDate?: string;
-    expiredDate?: string;
-    successDate?: string;
+    date?: string[];
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { forkJoin, Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { User } from '../interfaces/user';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { DataService } from './data.service';
+import { TableService } from './table.service';
 
 @Injectable({
     providedIn: 'root',
@@ -18,6 +19,7 @@ export class UserService {
         private router: Router,
         private messService: NzMessageService,
         private dataService: DataService,
+        private tableService: TableService,
     ) {}
 
     private handleError(error: HttpErrorResponse) {
@@ -58,6 +60,30 @@ export class UserService {
             this.router.navigate(['/login']);
             return;
         }
+    }
+
+    getTableAndUser(idTable: number): Observable<any> {
+        return forkJoin([this.tableService.getTableOne(idTable), this.httpClient.get<User[]>(this.baseUrl + '/user')]);
+    }
+
+    async getUserByTable(idTable: number) {
+        const userTable = await this.getTableAndUser(idTable)
+            .pipe(
+                map(([tables, users]) => {
+                    const newUserTable = tables.map((table: any) => {
+                        let user = users.filter((itemU: any) => table.members.includes(itemU.id));
+                        return {
+                            table: table.id,
+                            users: user,
+                        };
+                    });
+
+                    return newUserTable;
+                }),
+            )
+            .toPromise();
+
+        return userTable;
     }
 
     // PUT

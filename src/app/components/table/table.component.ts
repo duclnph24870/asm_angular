@@ -19,6 +19,7 @@ export class TableComponent implements OnInit {
     tickTable: any = [];
     activityTrackingData: any = [];
     listByTableData: any = [];
+    userTableData: any = {};
 
     constructor(
         private router: ActivatedRoute,
@@ -82,6 +83,11 @@ export class TableComponent implements OnInit {
             // lấy ra list của table
             this.listService.getListAndCardByTable(id).then((res) => {
                 this.listByTableData = res;
+            });
+
+            // Lấy ra danh sách user của bảng
+            this.userService.getUserByTable(id).then((res) => {
+                this.userTableData = res[0];
             });
         });
 

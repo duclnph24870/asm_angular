@@ -28,4 +28,13 @@ export class CardService {
     createCard(data: Card) {
         return this.httpClient.post<Card[]>(this.baseUrl + '/cards', data).pipe(catchError(this.handleError));
     }
+
+    // PUT
+    editCard(data: any, idCard: number) {
+        return this.httpClient.put<Card[]>(this.baseUrl + '/cards/' + idCard, data).pipe(catchError(this.handleError));
+    }
+
+    completeCard(data: any, idCard: number) {
+        return this.httpClient.put<Card[]>(this.baseUrl + '/cards/' + idCard, data);
+    }
 }

@@ -1,17 +1,29 @@
 <div class="flex flex-col bg-white rounded-[3px] py-1.5 px-2 w-full my-2">
     <div *ngIf="data?.label" class="card-header flex justify-between my-1 items-center h-[16px]">
         <div class="card-label w-[40px] min-w-[40px] h-[8px] rounded-[5px]" [style.backgroundColor]="data?.label"></div>
-        <button class="editCard-icon hidden relative top-[-1px] right-[3px]">
+        <button (click)="showModalEditCard()" class="editCard-icon hidden relative top-[-1px] right-[3px]">
             <span nz-icon nzType="highlight" class="text-[12px]" nzTheme="outline"></span>
         </button>
     </div>
-    <p class="w-full">
-        {{ data?.title }}
+    <p class="w-full flex items-center card-content">
+        <span class="mr-auto">{{ data?.title }}</span>
+        <span
+            nz-icon
+            nzType="highlight"
+            (click)="showModalEditCard()"
+            class="text-[12px] hidden editCard-icon cursor-pointer"
+            nzTheme="outline"
+        ></span>
     </p>
-    <div *ngIf="data?.createDate && data?.expiredDate" class="card-footer flex items-center flex-wrap">
-        <div class="card-date flex items-center text-[#5e6c84] mr-auto my-1">
-            <span nz-icon nzType="clock-circle" class="text-[#5e6c84] mr-2" nzTheme="outline"></span>
-            {{ data?.createDate }} - {{ data?.expiredDate }}
+    <div *ngIf="data?.date" class="card-footer flex items-center flex-wrap">
+        <div
+            class="card-date flex items-center text-[#5e6c84] mr-auto my-1 px-2 py-1 rounded-[3px]"
+            [class.err]="!checkProcess(data?.date[1])"
+            [class.success]="data?.success || success"
+            (click)="completeCard(checkProcess(data?.date[1]))"
+        >
+            <span nz-icon nzType="clock-circle" class="text-inherit mr-2" nzTheme="outline"></span>
+            {{ formatDateConfig(data?.date[0]) }} - {{ formatDateConfig(data?.date[1]) }}
         </div>
 
         <div *ngIf="data?.members && data?.members.length > 0" class="card-users my-1">

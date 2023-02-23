@@ -1,0 +1,202 @@
+<nz-modal
+    [(nzVisible)]="data.status"
+    nzWidth="500px"
+    [nzClosable]="false"
+    [nzFooter]="null"
+    [nzCentered]="true"
+    (nzOnCancel)="handleCancel()"
+    nzClassName="[&>.ant-modal-content]:bg-none [&>.ant-modal-content]:shadow-none"
+>
+    <ng-container *nzModalContent>
+        <div class="p-3 pt-0 flex flex-col items-center">
+            <form class="flex flex-col w-full" [formGroup]="editCardForm">
+                <div class="w-full flex items-start">
+                    <div class="editFormCard-left w-[273px] min-w-[273px]">
+                        <div class="w-full bg-white rounded-[3px] p-2">
+                            <div class="w-full h-[16px] mb-1 flex items-center" *ngIf="editCardForm.value.label">
+                                <div
+                                    class="w-[40px] min-w-[40px] h-[8px] rounded-[5px]"
+                                    [style.backgroundColor]="editCardForm.value.label"
+                                ></div>
+                            </div>
+                            <textarea
+                                class="w-full outline-none p-2 mb-1 h-[90px] rounded-[3px]"
+                                formControlName="title"
+                            ></textarea>
+                        </div>
+                        <button
+                            (click)="onSubmit()"
+                            class="w-[70px] flex items-center justify-center h-[32px] rounded-[3px] bg-primary text-white shadow-md mt-[8px] disabled:bg-disabled disabled:text-[#a5adba] disabled:shadow-none"
+                        >
+                            Lưu
+                        </button>
+                    </div>
+
+                    <!-- button item  -->
+                    <div class="editFormCard-right ml-2 flex flex-col items-start">
+                        <button
+                            class="bg-[#0009] carkEditItem mb-1 text-[#c7d1db] hover:bg-[#000] text-[13px] hover:text-white flex items-center px-3 py-1.5 rounded-[3px]"
+                        >
+                            <span
+                                nz-icon
+                                nzType="credit-card"
+                                class="mr-2 relative top-[-1px] text-[13px] text-inherit"
+                                zTheme="outline"
+                            ></span>
+                            Mở thẻ
+                        </button>
+
+                        <!-- sửa nhãn dán  -->
+                        <button
+                            nz-dropdown
+                            [nzDropdownMenu]="menu"
+                            nzTrigger="click"
+                            class="bg-[#0009] carkEditItem mb-1 text-[#c7d1db] hover:bg-[#000] text-[13px] hover:text-white flex items-center px-3 py-1.5 rounded-[3px]"
+                        >
+                            <span
+                                nz-icon
+                                nzType="copy"
+                                nzPlacement="topCenter"
+                                class="mr-2 relative top-[-1px] text-[13px] text-inherit"
+                                zTheme="outline"
+                            ></span>
+                            Chỉnh sửa nhãn
+                        </button>
+
+                        <nz-dropdown-menu #menu="nzDropdownMenu">
+                            <div nz-menu class="w-[304px] px-3">
+                                <div
+                                    class="header-cardItem h-[40px] relative w-full flex justify-center items-center text-[#5e6c84]"
+                                >
+                                    Nhãn
+                                    <span
+                                        nz-icon
+                                        nzType="close"
+                                        class="absolute right-0 top-[50%] text-inherit"
+                                        style="transform: translateY(-50%)"
+                                        nzTheme="outline"
+                                    ></span>
+                                </div>
+                                <div class="h-[1px] w-full shadow-input mb-2"></div>
+
+                                <div class="w-full listLabel">
+                                    <h1 class="font-semibold text-[#5e6c84] text-[12px]">Nhãn</h1>
+                                    <nz-radio-group formControlName="label" class="w-full">
+                                        <label
+                                            nz-radio-button
+                                            *ngFor="let colorItem of dataColorLabel"
+                                            class="w-full [&>span]:w-full [&>span]:h-full p-0 my-1"
+                                            [nzValue]="colorItem.color"
+                                            style="border: none !important"
+                                        >
+                                            <div class="flex items-center w-full">
+                                                <div
+                                                    class="flex items-center justify-center w-[16px] h-[16px] min-w-[16px] mr-3 rounded-[3px] p-1"
+                                                    style="border: 1px solid #5e6c84"
+                                                >
+                                                    <span
+                                                        nz-icon
+                                                        nzType="check"
+                                                        class="text-[12px] text-none icon"
+                                                        nzTheme="outline"
+                                                    ></span>
+                                                </div>
+                                                <div
+                                                    class="h-[32px] w-full rounded-[3px] flex items-center justify-start"
+                                                    [style.backgroundColor]="colorItem.colorLight"
+                                                >
+                                                    <div
+                                                        class="w-[16px] h-[16px] min-w-[16px] ml-2 rounded-[50%]"
+                                                        [style.backgroundColor]="colorItem.color"
+                                                    ></div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </nz-radio-group>
+                                </div>
+                            </div>
+                        </nz-dropdown-menu>
+
+                        <!-- sửa thành viên -->
+                        <button
+                            [nzDropdownMenu]="user"
+                            nz-dropdown
+                            nzTrigger="click"
+                            class="bg-[#0009] carkEditItem mb-1 text-[#c7d1db] hover:bg-[#000] text-[13px] hover:text-white flex items-center px-3 py-1.5 rounded-[3px]"
+                        >
+                            <span
+                                nz-icon
+                                nzType="user"
+                                nzPlacement="topCenter"
+                                class="mr-2 relative top-[-1px] text-[13px] text-inherit"
+                                zTheme="outline"
+                            ></span>
+                            Thay đổi thành viên
+                        </button>
+                        <nz-dropdown-menu #user="nzDropdownMenu">
+                            <div nz-menu class="w-[304px] px-3">
+                                <div
+                                    class="header-cardItem h-[40px] relative w-full flex justify-center items-center text-[#5e6c84]"
+                                >
+                                    Thành viên
+                                    <span
+                                        nz-icon
+                                        nzType="close"
+                                        class="absolute right-0 top-[50%] text-inherit"
+                                        style="transform: translateY(-50%)"
+                                        nzTheme="outline"
+                                    ></span>
+                                </div>
+                                <div class="h-[1px] w-full shadow-input mb-2"></div>
+
+                                <div class="w-full listLabel">
+                                    <h1 class="font-semibold text-[#5e6c84] text-[12px]">Thành viên của bảng</h1>
+                                </div>
+                            </div>
+                        </nz-dropdown-menu>
+                        <!-- sửa ngày  -->
+                        <button
+                            nz-dropdown
+                            [nzDropdownMenu]="date"
+                            nzTrigger="click"
+                            class="bg-[#0009] carkEditItem mb-1 text-[#c7d1db] hover:bg-[#000] text-[13px] hover:text-white flex items-center px-3 py-1.5 rounded-[3px]"
+                        >
+                            <span
+                                nz-icon
+                                nzType="clock-circle"
+                                nzPlacement="topCenter"
+                                class="mr-2 relative top-[-1px] text-[13px] text-inherit"
+                                zTheme="outline"
+                            ></span>
+                            Chỉnh sửa ngày
+                        </button>
+                        <nz-dropdown-menu #date="nzDropdownMenu">
+                            <div nz-menu class="w-[304px] px-3">
+                                <div
+                                    class="header-cardItem h-[40px] relative w-full flex justify-center items-center text-[#5e6c84]"
+                                >
+                                    Ngày
+                                    <span
+                                        nz-icon
+                                        nzType="close"
+                                        class="absolute right-0 top-[50%] text-inherit"
+                                        style="transform: translateY(-50%)"
+                                        nzTheme="outline"
+                                    ></span>
+                                </div>
+                                <div class="h-[1px] w-full shadow-input mb-2"></div>
+
+                                <div class="w-full listLabel">
+                                    <h1 class="font-semibold text-[#5e6c84] text-[12px]">Ngày</h1>
+                                    <div class="my-2">
+                                        <nz-range-picker nzFormat="dd-MM-yyyy" formControlName="date"></nz-range-picker>
+                                    </div>
+                                </div>
+                            </div>
+                        </nz-dropdown-menu>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </ng-container>
+</nz-modal>

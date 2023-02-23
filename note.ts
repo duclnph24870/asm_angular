@@ -1,46 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'nz-demo-form-horizontal-login',
+    selector: 'nz-demo-checkbox-group',
     template: `
-        <form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="submitForm()">
-            <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your username!">
-                    <nz-input-group nzPrefixIcon="user">
-                        <input formControlName="userName" nz-input placeholder="Username" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-control nzErrorTip="Please input your Password!">
-                    <nz-input-group nzPrefixIcon="lock">
-                        <input formControlName="password" nz-input type="password" placeholder="Password" />
-                    </nz-input-group>
-                </nz-form-control>
-            </nz-form-item>
-            <nz-form-item>
-                <nz-form-control>
-                    <button nz-button nzType="primary" [disabled]="!validateForm.valid">Log in</button>
-                </nz-form-control>
-            </nz-form-item>
-        </form>
+        <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="log(checkOptionsOne)"></nz-checkbox-group>
+        <br />
+        <br />
+        <nz-checkbox-group [(ngModel)]="checkOptionsTwo" (ngModelChange)="log(checkOptionsTwo)"></nz-checkbox-group>
+        <br />
+        <br />
+        <nz-checkbox-group [(ngModel)]="checkOptionsThree" (ngModelChange)="log(checkOptionsThree)"></nz-checkbox-group>
     `,
 })
-export class NzDemoFormHorizontalLoginComponent implements OnInit {
-    validateForm!: UntypedFormGroup;
+export class NzDemoCheckboxGroupComponent {
+    checkOptionsOne = [
+        { label: 'Apple', value: 'Apple', checked: true },
+        { label: 'Pear', value: 'Pear' },
+        { label: 'Orange', value: 'Orange' },
+    ];
+    checkOptionsTwo = [
+        { label: 'Apple', value: 'Apple' },
+        { label: 'Pear', value: 'Pear', checked: true },
+        { label: 'Orange', value: 'Orange' },
+    ];
+    checkOptionsThree = [
+        { label: 'Apple', value: 'Apple', disabled: true, checked: true },
+        { label: 'Pear', value: 'Pear', disabled: true },
+        { label: 'Orange', value: 'Orange' },
+    ];
 
-    submitForm(): void {
-        console.log('submit', this.validateForm.value);
-    }
-
-    constructor(private fb: UntypedFormBuilder) {}
-
-    ngOnInit(): void {
-        this.validateForm = this.fb.group({
-            userName: [null, [Validators.required]],
-            password: [null, [Validators.required]],
-            remember: [true],
-        });
+    log(value: object[]): void {
+        console.log(value);
     }
 }

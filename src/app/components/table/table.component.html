@@ -38,28 +38,7 @@
                     Lọc
                 </button>
                 <div class="w-[1px] h-[16px] bg-primary mx-2"></div>
-                <nz-avatar-group class="max-w-[100px] mr-2">
-                    <nz-avatar
-                        class="rounded-[50%] w-[28px] h-[28px] flex items-center justify-center"
-                        nzIcon="user"
-                        nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-                    ></nz-avatar>
-                    <nz-avatar
-                        class="rounded-[50%] w-[28px] h-[28px] flex items-center justify-center"
-                        style="background-color: #f56a00"
-                        nzText="U"
-                    ></nz-avatar>
-                    <nz-avatar
-                        class="rounded-[50%] w-[28px] h-[28px] flex items-center justify-center"
-                        style="background-color: #f56a00"
-                        nzText="U"
-                    ></nz-avatar>
-                    <nz-avatar
-                        class="rounded-[50%] w-[28px] h-[28px] flex items-center justify-center"
-                        style="background-color: #fde3cf; color: #f56a00"
-                        nzText="+2"
-                    ></nz-avatar>
-                </nz-avatar-group>
+                <app-avatarGroup [users]="userTableData?.users"></app-avatarGroup>
 
                 <button class="bg-white h-[32px] rounded-[3px] p-1.5 px-3 flex items-center justify-center">
                     <span nz-icon nzType="user-add" class="text-[14px] mr-2" nzTheme="outline"></span>
@@ -159,3 +138,10 @@
         </div>
     </div>
 </div>
+
+<!-- modal edit card  -->
+<app-edit-card-modal
+    [dataUserTable]="userTableData?.users"
+    (updateListTable)="changeListByTable($event)"
+    (updateActivevity)="changeListActivity($event)"
+></app-edit-card-modal>

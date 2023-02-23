@@ -25,6 +25,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 import { LoginComponent } from './Pages/login/login.component';
 import { RegistorComponent } from './Pages/registor/registor.component';
@@ -37,6 +39,8 @@ import { CreateListComponent } from './components/createList.component';
 import { CardComponent } from './components/card/card.component';
 
 import { DateFnsModule } from 'ngx-date-fns';
+import { EditCardModalComponent } from './components/edit-card-modal/edit-card-modal.component';
+import { AvatarGroupComponent } from './components/avatarGroup.component';
 
 registerLocaleData(en);
 
@@ -55,6 +59,8 @@ registerLocaleData(en);
         CreateCardComponent,
         CreateListComponent,
         CardComponent,
+        EditCardModalComponent,
+        AvatarGroupComponent,
     ],
     imports: [
         BrowserModule,
@@ -73,6 +79,8 @@ registerLocaleData(en);
         NzRadioModule,
         NzPopconfirmModule,
         NzAvatarModule,
+        NzCheckboxModule,
+        NzDatePickerModule,
         DateFnsModule.forRoot(),
     ],
     providers: [{ provide: NZ_I18N, useValue: en_US }],

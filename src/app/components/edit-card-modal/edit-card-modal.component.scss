@@ -1,0 +1,18 @@
+.carkEditItem {
+    transition: all linear 0.1s;
+    &:hover {
+        transform: translateX(5px);
+    }
+}
+
+.listLabel {
+    label {
+        &::before {
+            display: none;
+        }
+
+        &.ant-radio-button-wrapper-checked span.text-none {
+            color: #5e6c84;
+        }
+    }
+}

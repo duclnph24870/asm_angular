@@ -5,3 +5,27 @@
         }
     }
 }
+
+.card-content {
+    &:hover {
+        .editCard-icon {
+            display: block;
+        }
+    }
+}
+
+.card-date {
+    cursor: pointer;
+    &:hover {
+        background-color: #ebecf0;
+    }
+    &.err {
+        background: #f87171;
+        color: #fff;
+    }
+
+    &.success {
+        background-color: #7bc86c;
+        color: #fff;
+    }
+}
