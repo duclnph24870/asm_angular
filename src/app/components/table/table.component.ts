@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
     idTable: number = -1;
     tickTable: any = [];
     activityTrackingData: any = [];
-    listByTableData: List[] = [];
+    listByTableData: any = [];
 
     constructor(
         private router: ActivatedRoute,
@@ -34,6 +34,12 @@ export class TableComponent implements OnInit {
     changeListByTable(data: List[]) {
         this.listByTableData = data;
     }
+
+    changeListActivity(data: any) {
+        this.activityTrackingData.push(data);
+    }
+
+    // ============
 
     changeShowMenu(isShow: boolean) {
         this.menuTableShow = isShow;
@@ -74,7 +80,7 @@ export class TableComponent implements OnInit {
             });
 
             // lấy ra list của table
-            this.listService.getListByTable(id).subscribe((res) => {
+            this.listService.getListAndCardByTable(id).then((res) => {
                 this.listByTableData = res;
             });
         });

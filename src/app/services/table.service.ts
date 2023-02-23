@@ -42,7 +42,7 @@ export class TableService {
 
     getActivityTracking(idTable: number) {
         return this.httpClient
-            .get(this.baseUrl + '/activityTracking?table=' + idTable)
+            .get(this.baseUrl + '/activityTracking?table=' + idTable + '&_sort=id&_order=desc')
             .pipe(catchError(this.handleError));
     }
 
@@ -76,8 +76,13 @@ export class TableService {
         return this.httpClient.post<Table[]>(this.baseUrl + '/tables', data).pipe(catchError(this.handleError));
     }
 
+    addActivityTracking(data: any) {
+        return this.httpClient.post<[]>(this.baseUrl + '/activityTracking', data).pipe(catchError(this.handleError));
+    }
+
     //DELETE
     deleteTable(id: number) {
+        // xóa bảng, xóa hoạt động , xóa card, xóa list, xóa trong tick user
         return this.httpClient.delete<Table[]>(this.baseUrl + '/tables/' + id).pipe(catchError(this.handleError));
     }
 }

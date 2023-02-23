@@ -1,1 +1,37 @@
-<p>card works!</p>
+<div class="flex flex-col bg-white rounded-[3px] py-1.5 px-2 w-full my-2">
+    <div *ngIf="data?.label" class="card-header flex justify-between my-1 items-center h-[16px]">
+        <div class="card-label w-[40px] min-w-[40px] h-[8px] rounded-[5px]" [style.backgroundColor]="data?.label"></div>
+        <button class="editCard-icon hidden relative top-[-1px] right-[3px]">
+            <span nz-icon nzType="highlight" class="text-[12px]" nzTheme="outline"></span>
+        </button>
+    </div>
+    <p class="w-full">
+        {{ data?.title }}
+    </p>
+    <div *ngIf="data?.createDate && data?.expiredDate" class="card-footer flex items-center flex-wrap">
+        <div class="card-date flex items-center text-[#5e6c84] mr-auto my-1">
+            <span nz-icon nzType="clock-circle" class="text-[#5e6c84] mr-2" nzTheme="outline"></span>
+            {{ data?.createDate }} - {{ data?.expiredDate }}
+        </div>
+
+        <div *ngIf="data?.members && data?.members.length > 0" class="card-users my-1">
+            <nz-avatar-group>
+                <nz-avatar
+                    class="w-[28px] min-w-[28px] h-[28px] rounded-[50%] flex items-center justify-center"
+                    nzIcon="user"
+                    nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                ></nz-avatar>
+                <nz-avatar
+                    class="w-[28px] min-w-[28px] h-[28px] rounded-[50%] flex items-center justify-center"
+                    style="background-color: #f56a00"
+                    nzText="U"
+                ></nz-avatar>
+                <nz-avatar
+                    class="w-[28px] min-w-[28px] h-[28px] rounded-[50%] flex items-center justify-center"
+                    style="background-color: #fde3cf; color: #f56a00"
+                    nzText="+2"
+                ></nz-avatar>
+            </nz-avatar-group>
+        </div>
+    </div>
+</div>

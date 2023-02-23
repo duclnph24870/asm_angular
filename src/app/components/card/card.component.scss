@@ -1,0 +1,7 @@
+.card-header {
+    &:hover {
+        .editCard-icon {
+            display: block;
+        }
+    }
+}

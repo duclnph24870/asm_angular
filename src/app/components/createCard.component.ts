@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { formatDate } from '@angular/common';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { CardService } from '../services/card.service';
+import { DataService } from '../services/data.service';
+import { ListService } from '../services/list.service';
+import { TableService } from '../services/table.service';
 
 @Component({
     selector: 'app-createCard',
@@ -16,8 +22,12 @@ import { Component, OnInit } from '@angular/core';
                 class="w-full outline-none p-2 my-1 h-[54px] rounded-[3px]"
                 placeholder="Nhập tiêu đề cho thẻ này..."
                 style="overflow-wrap: break-word;"
+                [(ngModel)]="contentValue"
             ></textarea>
-            <button class="my-1 mr-2 hove:bg-primary rounded-[3px] px-3 py-1.5 bg-[#0079bf] text-white ">
+            <button
+                (click)="submit()"
+                class="my-1 mr-2 hove:bg-primary rounded-[3px] px-3 py-1.5 bg-[#0079bf] text-white "
+            >
                 Thêm thẻ
             </button>
             <span
@@ -31,11 +41,64 @@ import { Component, OnInit } from '@angular/core';
     `,
 })
 export class CreateCardComponent implements OnInit {
+    @Input() contentValue: string = '';
+    @Input() idList: any = null;
+    @Input() listTitle: any = null;
+    @Input() idTable: any = null;
+    @Output() updateListTable = new EventEmitter();
+    @Output() updateActivevity = new EventEmitter<any>();
+    dateNow = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en-US');
+    user: any = {};
+
     isShowForm: boolean = false;
-    constructor() {}
+    constructor(
+        private dataService: DataService,
+        private listService: ListService,
+        private cardService: CardService,
+        private messService: NzMessageService,
+        private tableService: TableService,
+    ) {}
 
     changeShowForm(isShow: boolean) {
         this.isShowForm = isShow;
     }
-    ngOnInit() {}
+
+    submit() {
+        this.cardService
+            .createCard({
+                table: this.idTable,
+                list: this.idList,
+                title: this.contentValue,
+            })
+            .subscribe(
+                async (res) => {
+                    // thêm mới hoạt động
+                    const dataActivity = {
+                        table: this.idTable,
+                        imgUser: this.user.avatar,
+                        userName: this.user.userName,
+                        act: `đã thêm một thẻ vào danh sách ${this.listTitle}`,
+                        time: this.dateNow,
+                    };
+                    this.tableService.addActivityTracking(dataActivity).subscribe(
+                        (res) => {
+                            this.updateActivevity.emit(dataActivity);
+                        },
+                        (err) => {
+                            console.log('lỗi');
+                        },
+                    );
+                    const newListTable = await this.listService.getListAndCardByTable(this.idTable);
+                    this.updateListTable.emit(newListTable);
+                },
+                (error) => {
+                    this.messService.error('Đã xảy ra lỗi, vui lòng thử lại');
+                },
+            );
+    }
+    ngOnInit() {
+        this.dataService.user.subscribe((user) => {
+            this.user = user;
+        });
+    }
 }

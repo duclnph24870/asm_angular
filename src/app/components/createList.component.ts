@@ -1,7 +1,10 @@
+import { formatDate } from '@angular/common';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { List } from '../interfaces/list';
+import { DataService } from '../services/data.service';
 import { ListService } from '../services/list.service';
+import { TableService } from '../services/table.service';
 
 @Component({
     selector: 'app-createList',
@@ -45,8 +48,16 @@ export class CreateListComponent implements OnInit {
     @Input() idTable: number = -1;
     @Input() titleValue: string = '';
     @Output() updateListTable = new EventEmitter<List[]>();
+    @Output() updateActivevity = new EventEmitter<any>();
+    user: any = {};
+    dateNow = formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss', 'en-US');
     isShowForm: boolean = false;
-    constructor(private messService: NzMessageService, private listService: ListService) {}
+    constructor(
+        private messService: NzMessageService,
+        private listService: ListService,
+        private tableService: TableService,
+        private dataService: DataService,
+    ) {}
 
     changeShowForm(isShow: boolean) {
         this.isShowForm = isShow;
@@ -60,9 +71,28 @@ export class CreateListComponent implements OnInit {
             this.messService.warning('Tiêu đề quá dài');
             return;
         }
+
         this.listService.createList(this.idTable, this.titleValue.trim()).subscribe(
             (res) => {
-                this.listService.getListByTable(this.idTable).subscribe((res) => {
+                // thêm mới hoạt động
+                const dataActivity = {
+                    table: this.idTable,
+                    imgUser: this.user.avatar,
+                    userName: this.user.userName,
+                    act: `đã thêm danh sách ${this.titleValue}`,
+                    time: this.dateNow,
+                };
+                this.tableService.addActivityTracking(dataActivity).subscribe(
+                    (res) => {
+                        this.updateActivevity.emit(dataActivity);
+                    },
+                    (err) => {
+                        console.log('lỗi');
+                    },
+                );
+
+                // lấy lại data list table
+                this.listService.getListAndCardByTable(this.idTable).then((res) => {
                     this.updateListTable.emit(res);
                     this.isShowForm = false;
                     this.titleValue = '';
@@ -74,5 +104,9 @@ export class CreateListComponent implements OnInit {
         );
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.dataService.user.subscribe((user) => {
+            this.user = user;
+        });
+    }
 }
