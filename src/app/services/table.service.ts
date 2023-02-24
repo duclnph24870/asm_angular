@@ -85,4 +85,9 @@ export class TableService {
         // xóa bảng, xóa hoạt động , xóa card, xóa list, xóa trong tick user
         return this.httpClient.delete<Table[]>(this.baseUrl + '/tables/' + id).pipe(catchError(this.handleError));
     }
+
+    // PUT
+    addMember(data: any, idTable: number) {
+        return this.httpClient.put<Table[]>(this.baseUrl + '/tables/' + idTable, data);
+    }
 }

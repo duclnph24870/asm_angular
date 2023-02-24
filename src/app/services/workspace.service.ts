@@ -56,4 +56,9 @@ export class WorkspaceService {
     createWorkspace(data: any): Observable<Workspace> {
         return this.httpClient.post<Workspace>(this.baseUrl + '/workspace', data).pipe(catchError(this.handleError));
     }
+
+    //PUT
+    addMember(data: any, idWp: number) {
+        return this.httpClient.put<Workspace[]>(this.baseUrl + '/workspace/' + idWp, data);
+    }
 }

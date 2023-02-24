@@ -31,7 +31,13 @@
                 class="flex pl-4 pr-3 h-[32px] hover:text-white items-center text-white hover:bg-[#3588b9] cursor-pointer"
             >
                 <span nz-icon nzType="usergroup-add" class="mr-2" nzTheme="outline"></span> Thành viên
-                <span nz-icon nzType="plus" class="ml-auto mx-1.5 text-[14px]" nzTheme="outline"></span>
+                <span
+                    nz-icon
+                    nzType="plus"
+                    class="ml-auto mx-1.5 text-[14px]"
+                    nzTheme="outline"
+                    (click)="showModalAddUser()"
+                ></span>
             </div>
 
             <div
@@ -96,3 +102,67 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+
+<!-- add user modal  -->
+<nz-modal
+    [(nzVisible)]="status"
+    nzWidth="500px"
+    [nzClosable]="false"
+    [nzFooter]="null"
+    [nzCentered]="true"
+    (nzOnCancel)="handleCancel()"
+>
+    <ng-container *nzModalContent>
+        <div class="p-5 flex flex-col items-center">
+            <form action="" class="w-full" [formGroup]="formAddUser" (ngSubmit)="onSubmit()">
+                <h1 class="text-[20px] text-text w-full">Mời vào không gian làm việc</h1>
+                <div class="input-group mt-[12px] flex flex-col w-full">
+                    <label class="font-bold text-[12px] mb-1">Địa chỉ email</label>
+                    <input
+                        class="w-full hover:bg-inputHover focus:bg-white rounded-[3px] outline-0 block h-[48px] py-[8px] px-[12px] shadow-input mb-[6px] focus:shadow-inputFocus"
+                        type="email"
+                        autofocus
+                        placeholder="duclnph24870@fpt.edu.vn"
+                        formControlName="email"
+                    />
+                    <p class="description text-[12px] text-[#6B778C]">Tên email của người bạn muốn mời</p>
+                </div>
+
+                <div class="input-group mt-[12px] flex flex-col">
+                    <label class="font-bold text-[12px] mb-1">không gian làm việc</label>
+
+                    <nz-select
+                        nzPlaceHolder="Chọn ..."
+                        nzAllowClear
+                        formControlName="workspace"
+                        class="[&>.ant-select-selector]:hover:bg-inputHover"
+                    >
+                        <nz-option *ngFor="let o of workspaceUser" [nzValue]="o.id" [nzLabel]="o.name"></nz-option>
+                    </nz-select>
+                </div>
+
+                <div class="input-group mt-[12px] flex flex-col">
+                    <label class="font-bold text-[12px] mb-1">Bảng</label>
+
+                    <nz-select
+                        nzPlaceHolder="Chọn ..."
+                        nzAllowClear
+                        formControlName="table"
+                        [nzDisabled]="tableDataAddUser.length === 0"
+                        class="[&>.ant-select-selector]:hover:bg-inputHover"
+                    >
+                        <nz-option *ngFor="let o of tableDataAddUser" [nzValue]="o.id" [nzLabel]="o.title"></nz-option>
+                    </nz-select>
+                </div>
+
+                <button
+                    type="submit"
+                    class="w-full h-[48px] rounded-[3px] bg-primary text-white shadow-md mt-[12px] disabled:bg-disabled disabled:text-[#a5adba] disabled:shadow-none"
+                    [disabled]="!formAddUser.valid"
+                >
+                    Tiếp tục
+                </button>
+            </form>
+        </div>
+    </ng-container>
+</nz-modal>

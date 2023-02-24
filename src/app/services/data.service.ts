@@ -19,6 +19,7 @@ export class DataService {
         status: false,
     });
     private widthAsideWorkspacePage = new BehaviorSubject<boolean>(true);
+    private dataModalAddUser = new BehaviorSubject<any>({});
 
     tableWorkspaceData = this.tableWorkspace.asObservable();
     currentWorkspace = this.workspace.asObservable();
@@ -27,6 +28,7 @@ export class DataService {
     visibleModalCreateTableCurr = this.visibleModalCreateTable.asObservable();
     widthAsideWorkspace = this.widthAsideWorkspacePage.asObservable();
     dataModalEditCardCurr = this.dataModalEditCard.asObservable();
+    dataModalAddUserCrr = this.dataModalAddUser.asObservable();
 
     constructor() {}
 
@@ -56,5 +58,9 @@ export class DataService {
 
     setDataModalEditCard(data: any) {
         this.dataModalEditCard.next(data);
+    }
+
+    setDataModalAddUser(data: any) {
+        this.dataModalAddUser.next(data);
     }
 }

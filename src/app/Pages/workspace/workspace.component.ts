@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Table } from 'src/app/interfaces/table';
+import { User } from 'src/app/interfaces/user';
+import { Workspace } from 'src/app/interfaces/workspace';
 import { DataService } from 'src/app/services/data.service';
 import { TableService } from 'src/app/services/table.service';
 import { UserService } from 'src/app/services/user.service';
@@ -18,6 +21,9 @@ export class WorkspaceComponent implements OnInit {
     dataWorkspace: any = {};
     tableData: Table[] = [];
     tickTableList: any = [];
+    status: boolean = false;
+    workspaceUser: Workspace[] = [];
+    tableDataAddUser: Table[] = [];
     constructor(
         private dataService: DataService,
         private router: ActivatedRoute,
@@ -29,6 +35,103 @@ export class WorkspaceComponent implements OnInit {
     ) {
         this.dataService.widthAsideWorkspace.subscribe((res) => {
             this.widthAside = res;
+        });
+    }
+
+    formAddUser = new FormGroup({
+        email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+        workspace: new FormControl('', Validators.required),
+        table: new FormControl(''),
+    });
+
+    handleCancel() {
+        this.dataService.setDataModalAddUser({
+            status: false,
+        });
+    }
+
+    showModalAddUser() {
+        this.dataService.setDataModalAddUser({
+            status: true,
+        });
+    }
+
+    onSubmit() {
+        const valueForm = this.formAddUser.value;
+        let dataWpOld: Workspace | undefined = undefined;
+        let tableDataOld: Table | undefined = undefined;
+        this.userService.checkEmail(valueForm.email).subscribe((check: User[]) => {
+            if (check.length === 0) {
+                this.messService.warning('Email bạn cần mời không tồn tại');
+                return;
+            }
+            if (!valueForm.table) {
+                dataWpOld = this.workspaceUser.find((item) => item.id === Number(valueForm.workspace));
+                if (dataWpOld?.members) {
+                    // check xem đã tồn tại trong member chưa
+                    if (dataWpOld.members.includes(Number(check[0].id))) {
+                        this.messService.warning('Người dùng đã tồn tại trong không gian làm việc');
+                        return;
+                    }
+                    this.workspaceService
+                        .addMember(
+                            {
+                                ...dataWpOld,
+                                members: [...dataWpOld.members, Number(check[0].id)],
+                            },
+                            Number(valueForm.workspace),
+                        )
+                        .subscribe((res) => {
+                            this.messService.success(
+                                'Thêm ' + check[0].userName + ' vào không gian làm việc thành công',
+                            );
+                            this.formAddUser.reset();
+                        });
+                }
+            } else {
+                dataWpOld = this.workspaceUser.find((item) => item.id === Number(valueForm.workspace));
+                tableDataOld = this.tableDataAddUser.find((item) => item.id === Number(valueForm.table));
+
+                if (dataWpOld?.members && tableDataOld?.members) {
+                    // check xem đã tồn tại trong member chưa
+                    if (dataWpOld.members.includes(Number(check[0].id))) {
+                        this.messService.warning('Người dùng đã tồn tại trong không gian làm việc');
+                    } else {
+                        this.workspaceService
+                            .addMember(
+                                {
+                                    ...dataWpOld,
+                                    members: [...dataWpOld.members, Number(check[0].id)],
+                                },
+                                Number(valueForm.workspace),
+                            )
+                            .subscribe((res) => {
+                                this.messService.success(
+                                    'Thêm ' + check[0].userName + ' vào khong gian làm việc thành công',
+                                );
+                            });
+                    }
+
+                    // check xem đã tồn tại trong member chưa
+                    if (tableDataOld.members.includes(Number(check[0].id))) {
+                        this.messService.warning('Người dùng đã tồn tại trong bảng');
+                        return;
+                    } else {
+                        this.tableService
+                            .addMember(
+                                {
+                                    ...tableDataOld,
+                                    members: [...tableDataOld.members, Number(check[0].id)],
+                                },
+                                Number(valueForm.table),
+                            )
+                            .subscribe((res) => {
+                                this.messService.success('Thêm ' + check[0].userName + ' vào table thành công');
+                                this.formAddUser.reset();
+                            });
+                    }
+                }
+            }
         });
     }
 
@@ -67,6 +170,27 @@ export class WorkspaceComponent implements OnInit {
         // lấy ra danh sách bảng đã đánh dấu
         this.dataService.user.subscribe(({ tick }) => {
             this.tickTableList = tick;
+        });
+
+        // lấy all workspace
+        this.dataService.currentWorkspace.subscribe((res) => {
+            this.workspaceUser = res;
+        });
+
+        // theo dõi sự thay đổi của control workspace
+        this.formAddUser.controls.workspace.valueChanges.subscribe((res) => {
+            if (!res) {
+                this.tableDataAddUser = [];
+                this.formAddUser.controls.table.setValue(null);
+                return;
+            }
+            this.tableService.getTableWpOne(Number(res)).subscribe((data) => {
+                this.tableDataAddUser = data;
+            });
+        });
+
+        this.dataService.dataModalAddUserCrr.subscribe((res) => {
+            this.status = res.status;
         });
     }
 }

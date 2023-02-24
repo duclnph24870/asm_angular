@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, SimpleChange } from '@angular/core';
 import { CardService } from 'src/app/services/card.service';
 import { DataService } from 'src/app/services/data.service';
 
@@ -10,7 +10,6 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class CardComponent {
     @Input() data: any = {};
-    success: boolean = false;
 
     constructor(private dataService: DataService, private cardService: CardService) {}
 
@@ -27,12 +26,12 @@ export class CardComponent {
                 .completeCard(
                     {
                         ...this.data,
-                        success: !this.success,
+                        success: !this.data.success,
                     },
                     this.data.id,
                 )
                 .subscribe((res) => {
-                    this.success = !this.success;
+                    this.data.success = !this.data.success;
                 });
         }
     }

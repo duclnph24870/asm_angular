@@ -19,7 +19,7 @@
         <div
             class="card-date flex items-center text-[#5e6c84] mr-auto my-1 px-2 py-1 rounded-[3px]"
             [class.err]="!checkProcess(data?.date[1])"
-            [class.success]="data?.success || success"
+            [class.success]="data?.success"
             (click)="completeCard(checkProcess(data?.date[1]))"
         >
             <span nz-icon nzType="clock-circle" class="text-inherit mr-2" nzTheme="outline"></span>
